@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@theme {
+    --color-bg: #12171f;
+    --color-card: #020305;
+    --color-text-title: #fcfcfc;
+    --color-text: #cccccc;
+    --color-primary: #219bff;
+}
+
+html,
+body{
+    @apply bg-bg text-text w-screen h-screen
+}
