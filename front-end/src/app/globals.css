@@ -6,6 +6,10 @@
     --color-text-title: #fcfcfc;
     --color-text: #cccccc;
     --color-primary: #219bff;
+    --color-nav: #0203053d;
+}
+.a{
+    background-color: #0203053d;
 }
 
 html,
