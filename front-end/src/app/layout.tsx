@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 
 
-import Navbar from "../components/header/Navbar";
+import Navbar from "../components/navbar/Navbar";
 import "./globals.css";
 
 const robotoSans = Roboto({

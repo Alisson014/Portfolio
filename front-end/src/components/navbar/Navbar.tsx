@@ -7,7 +7,7 @@ import { PiArrowFatLinesDownFill } from "react-icons/pi";
 const Navbar = () => {
 
     return(
-        <nav className="fixed top-0 left-0 w-screen flex items-center justify-between bg-nav py-2 px-3 backdrop-blur-sm 
+        <nav className="fixed z-50 top-0 left-0 w-screen flex items-center justify-between bg-nav py-2 px-3 backdrop-blur-sm 
             xl:px-16 lg:px-8
         ">
             <div className="flex justify-center items-center lg:gap-6 gap-2">
