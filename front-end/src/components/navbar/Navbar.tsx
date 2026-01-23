@@ -17,7 +17,7 @@ const Navbar = () => {
 
             <ul className="hidden lg:flex gap-16 bg-nav py-2.5 px-6 rounded-4xl">
                 <li className="hover:text-white transition-all ">
-                    <Link href="/">Sobre </Link>
+                    <Link href="/">Home </Link>
                 </li>
                 <li className="hover:text-white transition-all ">
                     <Link href="/">Skills</Link>

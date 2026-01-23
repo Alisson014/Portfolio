@@ -2,6 +2,7 @@
 
 @theme {
     --color-bg: #12171f;
+    --color-hero: #000614;
     --color-card: #020305;
     --color-text-title: #fcfcfc;
     --color-text: #cccccc;
@@ -14,5 +15,5 @@
 
 html,
 body{
-    @apply bg-bg text-text w-screen h-screen
+    @apply bg-bg text-text w-1/1 h-1/1 scroll-smooth
 }

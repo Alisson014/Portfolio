@@ -1,0 +1,12 @@
+.animationUP{
+    animation: 
+        any 10s ease-in-out infinite;
+}
+@keyframes any{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-110vh) translateX(50vh) scale(2);
+    }
+}
