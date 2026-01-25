@@ -12,7 +12,7 @@ const InitialHero = () => {
 
         window.scrollTo({
             behavior: 'smooth',
-            top: pos?.offsetTop,
+            top: (pos?.offsetTop ?? 0) - 70,
         })
     }
     const stars = [
@@ -42,8 +42,8 @@ const InitialHero = () => {
                     Crescer, <strong className="text-primary font-normal">aprimorar</strong> e desenvolver 
                 </h1>
                 <p className="text-lg sm:text-xl opacity-70">
-                    Técnico em Informática para internet, Desenvolvedor FullStack e um jovem fascinado pelo mundo da tecnologia digital,
-                    com grande vontade de se desenvolver enquanto profissional e pessoa.
+                    Técnico em Informática para internet, Desenvolvedor FullStack e um jovem fascinado pelo mundo da tecnologia digital e
+                    com muito estima pelo desenvolvimento profissional e pessoal.
                     
                 </p>
                 <button onClick={handleScroll}
