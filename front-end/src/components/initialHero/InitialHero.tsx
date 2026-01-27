@@ -54,7 +54,7 @@ const InitialHero = () => {
             </article>
 
             <section className="relative hidden lg:flex items-start justify-end w-1/2 h-full">
-                <Image src="/images/hero-image.png" alt="image alt..." width={500} height={100} className="-mt-30"/>
+                <Image src="/images/hero-image.png" alt="image alt..." width={500} height={500} className="-mt-30"/>
             </section>
         </section>
     );

@@ -1,7 +1,5 @@
-'use client';
 
-
-const HeroBlackHole = () => {
+export default function HeroBlackHole() {
 
     return(
         <section className="flex w-full h-128 overflow-hidden justify-center items-center -mt-22 z-10">
@@ -11,5 +9,3 @@ const HeroBlackHole = () => {
         </section>
     );
 }
-
-export default HeroBlackHole;

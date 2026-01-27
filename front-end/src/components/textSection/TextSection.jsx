@@ -35,7 +35,7 @@ export default function TextSection() {
     }
 
     return (
-        <section id="ReadMore" style={{height: isOpened ? `${heights.expanded}px` : `${heights.initial+2}px`, transition: 'ease-in-out 1s'}} className="overflow-hidden transition-all duration-1000">
+        <section id="ReadMore" style={{height: isOpened ? `${heights.expanded}px` : `${heights.initial+5}px`, transition: 'ease-in-out 1s'}} className="overflow-hidden transition-all duration-1000">
             <section ref={fullContentRef} className="flex flex-col gap-5 mx-4 sm:mx-8 md:mx-12">
                 <article ref={initialCardRef} className="flex flex-col items-start gap-5 w-full bg-linear-to-br from-gray-900  to-gray-950 border-2 border-gray-900 p-6 sm:p-8  rounded-xl">
                     <h1 className="text-2xl">Sobre Mim</h1>
@@ -46,7 +46,7 @@ export default function TextSection() {
                     </p>
                     <button onClick={handleExpend}
                     className="flex items-center justify-between border-2 text-sm text-gray-500 border-gray-600 rounded-full px-3 py-0.5 group hover:bg-gray-600 cursor-pointer" >
-                        <p className="group-hover:text-gray-900">Mostrar Mais</p>
+                        <p className="group-hover:text-gray-900">{isOpened ? 'Mostrar Menos' : 'Mostrar Mais'}</p>
                         <MdOutlineKeyboardArrowRight  className={`translate-x-2 text-2xl text-gray-600 scale-120 group-hover:text-gray-900 ${isOpened ? 'rotate-90' : ''} transition-all duration-500`} />
                     </button>
                 </article>
@@ -58,7 +58,7 @@ export default function TextSection() {
                         ipsum dolor sit amet consectetur adipisicing elit. Eveniet tenetur repellat deleniti eligendi architecto doloribus 
                         ullam consectetur libero accusamus unde fugit nam laborum, mollitia iure numquam eos quas quam debitis!
                     </p>
-                    <p>
+                    <p className="hidden sm:flex">
                         <SiAlwaysdata className="text-7xl p-2 rotate-y-180 rotate-180" />
                     </p>
                     
@@ -71,7 +71,7 @@ export default function TextSection() {
                         ipsum dolor sit amet consectetur adipisicing elit. Eveniet tenetur repellat deleniti eligendi architecto doloribus 
                         ullam consectetur libero accusamus unde fugit nam laborum, mollitia iure numquam eos quas quam debitis!
                     </p>
-                    <p>
+                    <p className="hidden sm:flex">
                         <FaArrowUpRightDots className="text-7xl p-2" />
                     </p>
                     
