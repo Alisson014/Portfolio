@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "tailwind.config.ts", "src/components/initialHero/Star.jsx", "src/components/textSection/TextSection.jsx"  ],
+, "tailwind.config.ts", "src/components/initialHero/Star.jsx", "src/components/textSection/TextSection.jsx", "src/components/formationSection/certificate.tsx"  ],
   "exclude": ["node_modules"]
 }

@@ -1,8 +1,9 @@
-'use client';
+
 import HeroBlackHole from "../components/heroBlackHole/HeroBlackHole";
 import InitialHero from "../components/initialHero/InitialHero";
 import TextSection from "../components/textSection/TextSection";
 import SkillsSection from "../components/skillsSection/SkillsSection";
+import FormationSection from "../components/formationSection/FormationSection";
 
 import Image from "next/image";
 
@@ -19,8 +20,8 @@ export default function Home() {
               src='/images/smile.png' alt="little person caracter" width={130} height={130}/>
             </div>
             <TextSection />
-            
             <SkillsSection />
+            <FormationSection />
 
             <br /><br /><br /><br />
         </main>

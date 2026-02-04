@@ -94,11 +94,11 @@ export default function SkillsSection(){
                 </div>
             </header>
 
-            <section className="flex items-start justify-center flex-wrap gap-5 py-12 md:px-12">
+            <div className="flex items-start justify-center flex-wrap gap-5 py-12 md:px-12">
                 {skills.map((skill) => (
                     <Skill key={skill.id} name={skill.name} icon={skill.icon} description={skill.description} />
                 ))}
-            </section>
+            </div>
         </section>
     );
 }

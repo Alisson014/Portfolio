@@ -1,4 +1,3 @@
-import { SiNextdotjs } from "react-icons/si";
 
 
 export default function Skill({icon, name, description}){

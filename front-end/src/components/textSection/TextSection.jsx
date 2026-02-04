@@ -35,7 +35,7 @@ export default function TextSection() {
     }
 
     return (
-        <section id="ReadMore" style={{height: isOpened ? `${heights.expanded}px` : `${heights.initial+5}px`, transition: 'ease-in-out 1s'}} className="overflow-hidden transition-all duration-1000">
+        <div id="ReadMore" style={{height: isOpened ? `${heights.expanded}px` : `${heights.initial+5}px`, transition: 'ease-in-out 1s'}} className="overflow-hidden transition-all duration-1000">
             <section ref={fullContentRef} className="flex flex-col gap-5 mx-4 sm:mx-8 md:mx-12">
                 <article ref={initialCardRef} className="flex flex-col items-start gap-5 w-full bg-linear-to-br from-gray-900  to-gray-950 border-2 border-gray-900 p-6 sm:p-8  rounded-xl">
                     <h1 className="text-2xl">Sobre Mim</h1>
@@ -77,6 +77,6 @@ export default function TextSection() {
                     
                 </article>
             </section>
-        </section>
+        </div>
     );
 }
