@@ -6,6 +6,7 @@ import SkillsSection from "../components/skillsSection/SkillsSection";
 import FormationSection from "../components/formationSection/FormationSection";
 
 import Image from "next/image";
+import ProjectSection from "../components/projectsSection/ProjectSection";
 
 export default function Home() {
     return (
@@ -22,7 +23,7 @@ export default function Home() {
             <TextSection />
             <SkillsSection />
             <FormationSection />
-
+            <ProjectSection />
             <br /><br /><br /><br />
         </main>
     );

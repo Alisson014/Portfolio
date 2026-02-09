@@ -34,7 +34,7 @@ const InitialHero = () => {
                 </div>
             </div>
             <article className="relative flex flex-col items-start gap-6 lg:w-1/2 -mt-30 sm:mt-0">
-                <button className="flex justify-center items-center gap-1 bg-linear-to-b from-gray-950 to-indigo-950 border-1 rounded-full py-1.5 px-3 border-indigo-700 text-indigo-300">
+                <button className="flex justify-center items-center gap-1 bg-linear-to-b from-gray-950 to-indigo-950 border rounded-full py-1.5 px-3 border-indigo-700 text-indigo-300">
                     <BsStars />
                     Desenvolvedor FullStack
                 </button>

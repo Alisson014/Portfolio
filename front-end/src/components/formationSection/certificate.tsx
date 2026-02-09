@@ -86,7 +86,7 @@ export default function Certificates(){
                     }
                 </div>
 
-                <button onClick={() => handleIndex(true)} disabled={index>=certificates.length} className="flex justify-center items-center cursor-pointer w-3/50 disabled:opacity-30 group">
+                <button onClick={() => handleIndex(true)} disabled={index>=certificates.length-1} className="flex justify-center items-center cursor-pointer w-3/50 disabled:opacity-30 group">
                     <div className="flex justify-center items-center bg-[#3c3d4d] w-10 h-10 rounded-full group-active:scale-80 transition-transform duration-200">
                         <RiArrowRightSLine className="text-2xl" />
                     </div>
