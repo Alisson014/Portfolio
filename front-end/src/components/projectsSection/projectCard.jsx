@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProjectCard({ thumbnail, title, color }){
+export default function ProjectCard({ id, thumbnail, name, color }){
 
     return(
         <article className="relative flex text-white flex-col gap-2 rounded-2xl overflow-hidden max-w-90 h-70 group">
@@ -12,9 +12,9 @@ export default function ProjectCard({ thumbnail, title, color }){
             <div className="absolute -bottom-14 h-35 flex flex-col justify-around  w-full group-hover:bottom-0 transition-all duration-300">
                 <div className="flex justify-between items-center w-full px-6">
                     <Image src="/images/developer-icon.png" alt="Developer's icon" width={60} height={60} />
-                    <p className="text-md font-medium max-w-46 text-center">{title}</p>
+                    <p className="text-md font-medium max-w-46 text-center">{name}</p>
                 </div>
-                <Link href="/" className="flex justify-end px-8 py-3">
+                <Link href={`/project/${id}`} className="flex justify-end px-8 py-3">
                     <button className="border px-6 py-1 rounded-full hover:bg-white hover:text-blue-500 cursor-pointer">Ver Mais</button>
                 </Link>
             </div>

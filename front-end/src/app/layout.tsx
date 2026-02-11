@@ -18,9 +18,7 @@ const robotoMono = Roboto_Mono({
 export const metadata: Metadata = {
   title: "José Alisson ",
   description: "Não deixe de conferir o portfólio (NextJs) de um jovem fascinado pelo mundo da tecnologia, aberto a novas aprendizagens e com grande interesse em se desenvolver como profissional e pessoa.",
-  icons: {
-    icon: 'favicon.png'
-  }
+  
 };
 
 export default function RootLayout({

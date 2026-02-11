@@ -1,4 +1,5 @@
 @import "tailwindcss";
+/* @custom-variant hover (&:hover); */
 
 @theme {
     --color-bg: #000614;
