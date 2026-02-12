@@ -39,9 +39,11 @@ const Navbar = () => {
                     
                 </li>
                 <li>
-                    <button className="bg-linear-to-b from-card to-gray-800 flex items-center justify-between gap-2 border-2 border-neutral-100 rounded-full px-1.5 py-0.5 cursor-pointer hover:from-white hover:to-white hover:text-black">
-                        <PiArrowFatLinesDownFill /> Currículo
-                    </button>
+                    <Link href="/Curriculo (1).pdf" target="_blank">
+                        <button className="bg-linear-to-b from-card to-gray-800 flex items-center justify-between gap-2 border-2 border-neutral-100 rounded-full px-1.5 py-0.5 cursor-pointer hover:from-white hover:to-white hover:text-black">
+                            <PiArrowFatLinesDownFill /> Currículo
+                        </button>
+                    </Link>
                 </li>
             </ul>
         </nav>
