@@ -28,12 +28,13 @@ export default function ProjectPage() {
     return(
         <div className="pt-20  overflow-hidden">
             <div className="w-full relative flex justify-center items-center">
+                <Link href={"/"}>
+                    <button className="absolute top-6 left-10 z-40 hover:underline cursor-pointer">◁ Voltar</button>
+                </Link>
                 <Image src={project.thumbnail} alt="Project image" width={1600} height={1600} className="w-full z-10" />
                 <div className="absolute w-full top-0 bottom-0 bg-bg/90 z-20 flex flex-col gap-2 md:gap-8 justify-center items-center text-center">
-                    {/* <GrDiamond className=" rounded-full p-4" size={84} /> */}
                     <Image src="/images/logo-hero-1.png" alt="Developer Icon" width={80} height={80} />
                     <h1 className="text-2xl md:text-4xl uppercase font-semibold">{project.name}</h1>
-                    {/* <hr className="w-3/5 border-none h-0.5 bg-gray-500"/> */}
                     <p className="text-lg md:text-2xl text-gray-400 ">Surpreenda-se com mais um projeto desenvolvido por José Alisson</p>
                     <TiArrowDown className="text-gray-600" size={40} />
                 </div>
@@ -48,7 +49,7 @@ export default function ProjectPage() {
                 </div>
             </div>
 
-            <div className="flex justify-between items-center flex-wrap gap-20 w-full bg-black relative -mt-20 py-20 px-12 z-30">
+            <div className="flex justify-center lg:justify-between items-center flex-wrap gap-20 w-full bg-black relative -mt-20 py-20 px-12 z-30">
                 <div className="flex flex-col justify-center items-center gap-2">
                     <h1 className="text-3xl text-gray-400">Stacks utilizadas</h1>
                 </div>
@@ -65,13 +66,14 @@ export default function ProjectPage() {
                 </div>
             </div>
 
-            <div style={{ background: `${project.color}` }} className="flex justify-around items-center grayscale-10 py-20 px-12 ">
-                    <Link href={project.gitHub} target="_blank">
-                        <button style={{ color: `${project.color}` }} className="bg-white outline-white outline-2 outline-offset-4 text-xl px-8 py-1 rounded-full cursor-pointer hover:outline-offset-8 hover:scale-110 transition-all duration-200">Git Hub</button>
+            <div style={{ background: `${project.color}` }} className="relative flex justify-around items-center py-20 sm:px-12 ">
+                    <div className="absolute w-full h-full top-0 left-0 bg-black/60"></div>
+                    <Link href={project.gitHub} target="_blank" className="relative">
+                        <button style={{ color: `black` }} className="bg-gray-400 outline-white outline-2 outline-offset-4 text-xl px-8 py-1 rounded-full cursor-pointer hover:outline-offset-8 hover:scale-110 transition-all duration-200">Git Hub</button>
                     </Link>
 
-                    <Link href={project.link} target="_blank">
-                        <button style={{ color: `${project.color}` }} className="bg-white outline-white outline-2 outline-offset-4 text-xl px-8 py-1 rounded-full cursor-pointer hover:outline-offset-8 hover:scale-110 transition-all duration-200">Web Site</button>
+                    <Link href={project.link} target="_blank" className="relative">
+                        <button style={{ color: `black` }} className="bg-gray-400 outline-white outline-2 outline-offset-4 text-xl px-8 py-1 rounded-full cursor-pointer hover:outline-offset-8 hover:scale-110 transition-all duration-200">Web Site</button>
                     </Link>
             </div>
         </div>

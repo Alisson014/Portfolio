@@ -13,7 +13,7 @@ export default function CuriositiesSection(){
     ]
 
     return(
-        <section className="w-full py-18 px-6 sm:px-12 flex flex-col bg-radial from-[#020c2b] to-bg to-60%">
+        <section className="w-full mt-18 py-18 px-6 sm:px-12 flex flex-col bg-radial from-[#020c2b] to-bg to-60%">
             <header className="flex flex-col items-center text-center gap-4">
                 <div className="text-blue-400">
                     <MdPersonSearch size={44} />

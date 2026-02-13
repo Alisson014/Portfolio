@@ -22,7 +22,7 @@ export default function ProjectSection(){
     const visibleProjects = projects.filter(p => p.name.toLowerCase().includes(search.toLowerCase()) || p.description.toLowerCase().includes(search.toLowerCase()));
 
     return (
-        <section className="flex flex-col items-center justify-start mt-18 bg-radial from-[#020c2b] to-bg to-60%">
+        <section className="flex flex-col items-center justify-start mt-30 bg-radial from-[#020c2b] to-bg to-60%">
             <header className="flex flex-col items-center text-center gap-3 px-5">
                 <Image src={"/images/logo-hero-2.png"} alt="Logo" width={80} height={80} />
                 <h1 className="text-3xl font-semibold text-gray-300">Projetos desenvolvidos</h1>
