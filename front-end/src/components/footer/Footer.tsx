@@ -1,3 +1,4 @@
+'use client';
 
 import Image from "next/image";
 import HeroFooter from "./HeroFooter";
@@ -8,6 +9,40 @@ import Link from "next/link";
 
 
 export default function Footer(){
+    const handleScrollHome = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+
+    const handleScrollSkill = () => {
+        const pos = document.getElementById('skillId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
+    const handleScrollProjects = () => {
+        const pos = document.getElementById('projectId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
+        const handleScrollCuriosities = () => {
+        const pos = document.getElementById('curiosityId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
 
     return(
         <footer className="flex flex-col items-center w-full pt-18">
@@ -52,11 +87,11 @@ export default function Footer(){
 
                     <div className="flex flex-col gap-4">
                         <h2 className="font-semibold text-lg">Navegação</h2>
-                        <Link href={"https://www.linkedin.com/in/jos%C3%A9-alisson-dias-da-costa-59375b322/"} target="_blank" className="mt-5 text-gray-400 hover:underline"> ▷ Home </Link>
-                        <Link href={"https://github.com/Alisson014/"} target="_blank" className="text-gray-400 hover:underline"> ▷ Skills </Link>
-                        <Link href={"mailto:josealissondiasdacostaf10@gmail.com"} target="_blank" className="text-gray-400 hover:underline"> ▷ Projetos </Link>
-                        <Link href={"https://www.instagram.com/j.alissons014/"} target="_blank" className="text-gray-400 hover:underline"> ▷ Curiosidades </Link>
-                        <Link href={"https://www.instagram.com/j.alissons014/"} target="_blank" className="text-gray-400 hover:underline"> ▷ Contato </Link>
+                        <Link href={"/"} onClick={handleScrollHome} className="mt-5 text-gray-400 hover:underline"> ▷ Home </Link>
+                        <Link href={"/"} onClick={handleScrollSkill} className="text-gray-400 hover:underline"> ▷ Skills </Link>
+                        <Link href={"/"} onClick={handleScrollProjects} className="text-gray-400 hover:underline"> ▷ Projetos </Link>
+                        <Link href={"/"} onClick={handleScrollCuriosities} className="text-gray-400 hover:underline"> ▷ Curiosidades </Link>
+                        <Link href={"/contact"} className="text-gray-400 hover:underline"> ▷ Contato </Link>
                         <Link href={"/Curriculo (1).pdf"} target="_blank" className="text-gray-400 hover:underline"> ▷ Curriculo </Link>
                     </div>
                 </div>

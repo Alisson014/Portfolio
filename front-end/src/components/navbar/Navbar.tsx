@@ -5,6 +5,39 @@ import Image from "next/image";
 import { PiArrowFatLinesDownFill } from "react-icons/pi";
 
 const Navbar = () => {
+    const handleScrollHome = () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+        });
+    }
+
+    const handleScrollSkill = () => {
+        const pos = document.getElementById('skillId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
+    const handleScrollProjects = () => {
+        const pos = document.getElementById('projectId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
+        const handleScrollCuriosities = () => {
+        const pos = document.getElementById('curiosityId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
 
     return(
         <nav className="fixed z-50 top-0 left-0 w-screen flex items-center justify-between bg-nav py-2 px-3 backdrop-blur-sm 
@@ -17,16 +50,16 @@ const Navbar = () => {
 
             <ul className="hidden lg:flex gap-16 bg-nav py-2.5 px-6 rounded-4xl">
                 <li className="hover:text-white transition-all ">
-                    <Link href="/">Home </Link>
+                    <Link href="/" onClick={handleScrollHome} >Home </Link>
                 </li>
                 <li className="hover:text-white transition-all ">
-                    <Link href="/">Skills</Link>
+                    <Link onClick={handleScrollSkill} href="/">Skills</Link>
                 </li>
                 <li className="hover:text-white transition-all ">
-                    <Link href="/">Projetos</Link>
+                    <Link onClick={handleScrollProjects} href="/">Projetos</Link>
                 </li>
                 <li className="hover:text-white transition-all ">
-                    <Link href="/">Curiosidades</Link>
+                    <Link onClick={handleScrollCuriosities} href="/">Curiosidades</Link>
                 </li>
             </ul>
 

@@ -79,7 +79,7 @@ export default function SkillsSection(){
     ]
 
     return (
-        <section className="w-full mt-24">
+        <section id="skillId" className="w-full mt-24">
             <header className="flex flex-col justify-start items-center gap-3 px-5 bg-radial from-[#020c2b] to-bg to-60%">
                 <Image src="/images/logo-hero-1.png" alt="logo of the hero" width={80} height={80} />
                 <h1 className="text-3xl font-semibold text-gray-300 ">Minhas Habilidades</h1>

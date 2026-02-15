@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@custom-variant hover (&:hover);
+
+@theme {
+    --color-bg: #000614;
+    --color-hero: #000614;
+    --color-card: #020305;
+    --color-text-title: #fcfcfc;
+    --color-text: #cccccc;
+    --color-primary: #219bff;
+    --color-nav: #0203055f;
+}
+.a{
+    background-color: #0a1019;
+}
+
+html,
+body{
+    @apply bg-bg text-text w-1/1 h-1/1
+}

@@ -11,7 +11,7 @@ export default function HeroFooter(){
                 <div className="flex justify-start items-end gap-8">
                     <div className="flex flex-col">
                         <Image src='/images/smile.png' alt="little person caracter" width={130} height={130}/>
-                        <Link className="-mt-8" href="https://www.google.com" >
+                        <Link className="-mt-8" href="/contact" >
                             <button className="bg-white text-black hover:bg-blue-500 hover:text-white px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer">
                                 Contato
                             </button>

@@ -13,10 +13,14 @@ import { RiArrowRightSLine, RiArrowLeftSLine } from "react-icons/ri";
 
 
 export default function Certificates(){
+
     const [isActive, setIsActive] = useState(false);
     const [pdf, setPdf] = useState(0);
     const [index, setIndex] = useState(0);
+    
     const intercalator = useRef(false);
+    const valid = useRef(false);
+
     const certificates = [
         { id: 0, name: 'Desenvolvimento FullStack', company: 'Capacita / C-jovem', pdf: '/certificado_cnh.pdf' },
         { id: 1, name: 'Técnico Informática para Internet', company: 'IFCE', pdf: '/Plano de Testes-spotify.pdf (1).pdf' },
@@ -29,6 +33,13 @@ export default function Certificates(){
 
     
     useEffect(() => {
+        if (!valid.current){
+            if(document.referrer != '/'){
+                valid.current = true;
+                return;
+            }
+        }
+
         if(!intercalator.current){
             intercalator.current = true;
             return;
@@ -42,6 +53,7 @@ export default function Certificates(){
                     inline: 'center',
                 });
             }
+
     }, [index]);
     
 

@@ -1,14 +1,14 @@
 
-import HeroBlackHole from "../components/heroBlackHole/HeroBlackHole";
-import InitialHero from "../components/initialHero/InitialHero";
-import TextSection from "../components/textSection/TextSection";
-import SkillsSection from "../components/skillsSection/SkillsSection";
-import FormationSection from "../components/formationSection/FormationSection";
+import HeroBlackHole from "../../components/heroBlackHole/HeroBlackHole";
+import InitialHero from "../../components/initialHero/InitialHero";
+import TextSection from "../../components/textSection/TextSection";
+import SkillsSection from "../../components/skillsSection/SkillsSection";
+import FormationSection from "../../components/formationSection/FormationSection";
 
 import Image from "next/image";
-import ProjectSection from "../components/projectsSection/ProjectSection";
-import CuriositiesSection from "../components/curiositiesSection/CuriositiesSection";
-import Footer from "../components/footer/Footer";
+import ProjectSection from "../../components/projectsSection/ProjectSection";
+import CuriositiesSection from "../../components/curiositiesSection/CuriositiesSection";
+import Footer from "../../components/footer/Footer";
 
 export default function Home() {
     return (
