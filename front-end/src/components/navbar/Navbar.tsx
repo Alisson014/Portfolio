@@ -32,7 +32,7 @@ const Navbar = () => {
 
             <ul className="flex items-center justify-center gap-1 sm:gap-4 text-white">
                 <li className=" flex items-center justify-center overflow-hidden rounded-full group">
-                    <Link className="relative flex items-center justify-center bg-linear-to-br from-blue-500 to-indigo-800 px-7 py-1 " href="/">
+                    <Link className="relative flex items-center justify-center bg-linear-to-br from-blue-500 to-indigo-800 px-7 py-1 " href="/contact">
                         <p className="relative z-20">Contato</p>
                         <div className="z-10 absolute rounded-full bg-linear-to-br from-gray-700 to-blue-800 p-0 group-hover:p-14 transition-all duration-500"></div>
                     </Link>

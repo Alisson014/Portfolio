@@ -18,7 +18,7 @@ export default function HeroFooter(){
                         </Link>
                     </div>
 
-                    <Link href="https://www.google.com" >
+                    <Link href="/Curriculo (1).pdf" target="_blank" >
                         <button className="bg-gray-800 text-white hover:bg-blue-500 px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer">
                             Currículo
                         </button>
