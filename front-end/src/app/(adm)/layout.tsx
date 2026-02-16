@@ -3,6 +3,7 @@ import { Roboto, Roboto_Mono } from "next/font/google";
 
 
 import "./globals.css";
+import ReCaptchaProvider from "@/src/components/loginForm/ReCaptchaProvider";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -28,8 +29,9 @@ export default function RootLayout({
   return (
     <html lang="pt-Br">
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased`} >
-        
-        {children}
+        <ReCaptchaProvider>
+          {children}
+        </ReCaptchaProvider>
       </body>
     </html>
   );
