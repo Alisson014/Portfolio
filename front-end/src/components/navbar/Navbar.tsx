@@ -43,10 +43,12 @@ const Navbar = () => {
         <nav className="fixed z-50 top-0 left-0 w-screen flex items-center justify-between bg-nav py-2 px-3 backdrop-blur-sm 
             xl:px-16 lg:px-8
         ">
-            <div className="flex justify-center items-center lg:gap-6 gap-2">
-                <Image src="/images/logo-image.png" alt="Logo Image" width={70} height={70} />
-                <p className="hidden sm:flex">José Alisson</p>
-            </div>
+            <Link href={"/"}>
+                <div className="flex justify-center items-center lg:gap-6 gap-2">
+                    <Image src="/images/logo-image.png" alt="Logo Image" width={70} height={70} />
+                    <p className="hidden sm:flex">José Alisson</p>
+                </div>
+            </Link>
 
             <ul className="hidden lg:flex gap-16 bg-nav py-2.5 px-6 rounded-4xl">
                 <li className="hover:text-white transition-all ">

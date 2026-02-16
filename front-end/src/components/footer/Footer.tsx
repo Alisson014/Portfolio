@@ -57,7 +57,7 @@ export default function Footer(){
                         José Alisson
                     </h1>
                     <h2 className="font-semibold mt-5">Créditos</h2>
-                    <p className="text-gray-400">Imagens geradas com Gemini</p>
+                    <p className="text-gray-400">Imagens geradas com Gemini e Freepik</p>
                     <Link href={"https://www.builtatlightspeed.com/demo/sanidhyy-space-portfolio"} target="_blank" className="text-gray-400 hover:underline"> ▷ Inspiração para hero inicial </Link>
                     <h2 className="font-semibold mt-5">Outras informações</h2>
                     <p className="text-gray-400">Design do projeto inspirado em conceitos da comunidade e adaptados</p>
