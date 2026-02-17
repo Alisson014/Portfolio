@@ -1,5 +1,6 @@
 'use client';
 
+import { toast } from "react-toastify";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useState, ChangeEvent } from "react";
 
@@ -19,6 +20,32 @@ export default function LoginForm(){
 
     const { executeRecaptcha } = useGoogleReCaptcha();    
 
+    async function getRecaptcha(){
+        if (!executeRecaptcha){
+            toast.error("Recaptcha não está funcionando.");
+            return
+        }
+
+        const token = await executeRecaptcha("form_submit");
+
+        const responseRecaptcha = await fetch('/api/verify-recaptcha', {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({ token })
+        });
+
+
+        const dataRecaptcha = await responseRecaptcha.json();
+
+        if (dataRecaptcha.score < 0.5){
+            toast.error("Você é um robo, tente mais tarde.");
+        }
+
+        return dataRecaptcha.success;
+    }
+
     function handleChange (e: ChangeEvent<HTMLInputElement>) {
         setFormData({ ...formData, [e.target?.name]: e.target?.value });
         console.log(formData);
@@ -28,74 +55,73 @@ export default function LoginForm(){
         setCod(e.target.value);
     }
 
-    function handleCod(){
-        alert("Código enviado com sucesso");
+    async function handleCod(){
+        try{
+
+            if (!executeRecaptcha){
+                toast.error("Recaptcha não está funcionando.");
+                return
+            }
+
+            const recaptchaSuccess = await getRecaptcha();
+
+            if(recaptchaSuccess){
+                // Code Request
+                toast.info("Código enviado!");              
+            } else{
+                throw new Error("Você não passou no teste do Recaptcha.");
+            }
+            
+        } catch (e:unknown){
+            if (e instanceof Error) {
+                toast.error(e.message);
+            }
+        }
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-
-        if (!executeRecaptcha){
-            alert("Recaptcha is not working");
-            return
-        }
-
-        const token = await executeRecaptcha("form_submit");
-
-        const responseRecaptcha = await fetch('/api/verify-recaptcha', {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({ token })
-        });
-
-        if(!responseRecaptcha){
-            alert("Bad");
-        }
-
-        const dataRecaptcha = await responseRecaptcha.json();
-
-        if(dataRecaptcha.success){
-            alert(formData.email + formData.password + dataRecaptcha.score);
-            setFormData({ email: '', password: '' });
-        } else {
-            alert("Recaptcha verification failed: " + dataRecaptcha.success + dataRecaptcha.score);
-        }
-
         
+        try {
+            const recaptchaSuccess = await getRecaptcha();
+
+            if(recaptchaSuccess){
+                // Login request
+
+                setFormData({ email: '', password: '' });
+                toast.success("Login Realizado com sucesso!");
+            } else {
+                throw new Error("Você não passou no teste do Recaptcha.");
+            }
+
+        } catch (e: unknown){
+            if (e instanceof Error){
+                toast.error(e.message);    
+            }
+        }
     }
 
     async function onSubmitCod(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
 
-        if (!executeRecaptcha){
-            alert("Recaptcha is not working");
-            return
+        try{
+
+            const recaptchaSuccess = await getRecaptcha();
+
+            if(recaptchaSuccess){
+                // Validation Cod Request
+
+                toast.success("Código válido!");
+                setCod('');
+            } else {
+                throw new Error("Você não passou no teste do Recaptcha.");
+            }
+        } catch (e : unknown){
+            if (e instanceof Error){
+                toast.error(e.message);
+            }
         }
-
-        const token = await executeRecaptcha("form_submit");
-
-        const responseRecaptcha = await fetch('/api/verify-recaptcha', {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({ token })
-        });
-
-        if(!responseRecaptcha){
-            alert("Bad");
-        }
-
-        const dataRecaptcha = await responseRecaptcha.json();
-
-         if(dataRecaptcha.success){
-            alert(cod + dataRecaptcha.score);
-            setCod('');
-        } else {
-            alert("Recaptcha verification failed: " + dataRecaptcha.success + dataRecaptcha.score);
-        }
+        
 
     }
 

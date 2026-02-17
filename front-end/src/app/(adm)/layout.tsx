@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Roboto, Roboto_Mono } from "next/font/google";
 
+import { ToastContainer, Bounce } from 'react-toastify';
 
 import "./globals.css";
 import ReCaptchaProvider from "@/src/components/loginForm/ReCaptchaProvider";
@@ -31,6 +32,19 @@ export default function RootLayout({
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased`} >
         <ReCaptchaProvider>
           {children}
+          <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+            transition={Bounce}
+          />
         </ReCaptchaProvider>
       </body>
     </html>
