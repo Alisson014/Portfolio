@@ -2,53 +2,31 @@
 
 import { toast } from "react-toastify";
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
-import { useState, ChangeEvent } from "react";
-
+import { useState, ChangeEvent, useContext } from "react";
+import { AuthContext } from "@/src/app/contexts/AuthContext";
 
 import { MdEmail } from "react-icons/md";
 import { IoEyeSharp } from "react-icons/io5";
 import { IoEyeOffSharp } from "react-icons/io5";
 
-
+type FormDataType = {
+    email: string,
+    password: string,
+}
 
 export default function LoginForm(){
     const [forgottenPassword, setForgottenPassword] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
-    const [formData, setFormData] = useState({ email: '', password: '' });
+    const [formData, setFormData] = useState<FormDataType>({ email: '', password: '' });
     const [cod, setCod] = useState('');
 
     const { executeRecaptcha } = useGoogleReCaptcha();    
 
-    async function getRecaptcha(){
-        if (!executeRecaptcha){
-            toast.error("Recaptcha não está funcionando.");
-            return
-        }
-
-        const token = await executeRecaptcha("form_submit");
-
-        const responseRecaptcha = await fetch('/api/verify-recaptcha', {
-            method: 'POST',
-            headers: {
-                'Content-Type':'application/json'
-            },
-            body: JSON.stringify({ token })
-        });
-
-
-        const dataRecaptcha = await responseRecaptcha.json();
-
-        if (dataRecaptcha.score < 0.5){
-            toast.error("Você é um robo, tente mais tarde.");
-        }
-
-        return dataRecaptcha.success;
-    }
+    const { GetRecaptcha, LogIn } = useContext(AuthContext);
 
     function handleChange (e: ChangeEvent<HTMLInputElement>) {
         setFormData({ ...formData, [e.target?.name]: e.target?.value });
-        console.log(formData);
     }
 
     function handleChangeCod(e: ChangeEvent<HTMLInputElement>) {
@@ -63,14 +41,15 @@ export default function LoginForm(){
                 return
             }
 
-            const recaptchaSuccess = await getRecaptcha();
+            const recaptchaSuccess = await GetRecaptcha();
 
-            if(recaptchaSuccess){
-                // Code Request
-                toast.info("Código enviado!");              
-            } else{
+            if(!recaptchaSuccess){
                 throw new Error("Você não passou no teste do Recaptcha.");
-            }
+                
+            } 
+
+            // Code Request
+            toast.info("Código enviado!");              
             
         } catch (e:unknown){
             if (e instanceof Error) {
@@ -83,16 +62,17 @@ export default function LoginForm(){
         e.preventDefault();
         
         try {
-            const recaptchaSuccess = await getRecaptcha();
+            const recaptchaSuccess = await GetRecaptcha();
 
-            if(recaptchaSuccess){
-                // Login request
-
-                setFormData({ email: '', password: '' });
-                toast.success("Login Realizado com sucesso!");
-            } else {
+            if(!recaptchaSuccess){
+                
                 throw new Error("Você não passou no teste do Recaptcha.");
+                
             }
+
+            await LogIn(formData);
+            setFormData({ email: '', password: '' });
+            toast.success("Login Realizado com sucesso!");
 
         } catch (e: unknown){
             if (e instanceof Error){
@@ -106,16 +86,15 @@ export default function LoginForm(){
 
         try{
 
-            const recaptchaSuccess = await getRecaptcha();
+            const recaptchaSuccess = await GetRecaptcha();
 
-            if(recaptchaSuccess){
-                // Validation Cod Request
-
-                toast.success("Código válido!");
-                setCod('');
-            } else {
-                throw new Error("Você não passou no teste do Recaptcha.");
+            if(!recaptchaSuccess){
+                throw new Error("Você não passou no teste do Recaptcha.")  
             }
+            // Validation Cod Request
+            toast.success("Código válido!");
+            setCod('');
+
         } catch (e : unknown){
             if (e instanceof Error){
                 toast.error(e.message);

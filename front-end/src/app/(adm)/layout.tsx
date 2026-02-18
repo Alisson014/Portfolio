@@ -4,7 +4,8 @@ import { Roboto, Roboto_Mono } from "next/font/google";
 import { ToastContainer, Bounce } from 'react-toastify';
 
 import "./globals.css";
-import ReCaptchaProvider from "@/src/components/loginForm/ReCaptchaProvider";
+import ReCaptchaProvider from "@/src/components/recaptchaProvider/ReCaptchaProvider";
+import { AuthProvider } from "../contexts/AuthContext";
 
 const robotoSans = Roboto({
   variable: "--font-roboto-sans",
@@ -31,20 +32,22 @@ export default function RootLayout({
     <html lang="pt-Br">
       <body className={`${robotoSans.variable} ${robotoMono.variable} antialiased`} >
         <ReCaptchaProvider>
-          {children}
-          <ToastContainer
-            position="top-center"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick={false}
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-            transition={Bounce}
-          />
+          <AuthProvider>
+            {children}
+            <ToastContainer
+              position="top-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              transition={Bounce}
+            />
+          </AuthProvider>
         </ReCaptchaProvider>
       </body>
     </html>
