@@ -23,7 +23,7 @@ export default function Star({initialLeft, delay}) {
             height: '2px',
             boxShadow: '0 0 5px white',
             left: `${left}%`,
-            animationDelay: `${bottom}s`,
+            animationDelay: `${delay}s`,
             transition: 'ease-in-out 14s',
             bottom: '-10px'
         }}>
