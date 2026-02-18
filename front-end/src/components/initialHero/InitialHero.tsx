@@ -16,10 +16,10 @@ const InitialHero = () => {
         })
     }
     const stars = [
-        {id: 1, bottom: 1}, {id: 2, bottom: 3}, {id: 3, bottom: 0.5}, {id: 4, bottom: 5}, {id: 5, bottom: 1.5}, {id: 6, bottom: 8},
-        {id: 7, bottom: 2}, {id: 8, bottom: 0.8}, {id: 9, bottom: 0.9}, {id: 10, bottom: 6.5}, {id: 11, bottom: 2.5}, {id: 12, bottom: 4.5},
-        {id: 13, bottom: 0.4}, {id: 14, bottom: 1}, {id: 15, bottom: 5.5}, {id: 16, bottom: 1.8}, {id: 17, bottom: 7.5}, {id: 18, bottom: 3.5},
-        {id: 19, bottom: 0.95}, {id: 20, bottom: 3.8}
+        {id: 1, daley: 1}, {id: 2, daley: 3}, {id: 3, daley: 0.5}, {id: 4, daley: 5}, {id: 5, daley: 1.5}, {id: 6, daley: 8},
+        {id: 7, daley: 2}, {id: 8, daley: 0.8}, {id: 9, daley: 0.9}, {id: 10, daley: 6.5}, {id: 11, daley: 2.5}, {id: 12, daley: 4.5},
+        {id: 13, daley: 0.4}, {id: 14, daley: 1}, {id: 15, daley: 5.5}, {id: 16, daley: 1.8}, {id: 17, daley: 7.5}, {id: 18, daley: 3.5},
+        {id: 19, daley: 0.95}, {id: 20, daley: 3.8}
 
     ]
 
@@ -28,7 +28,7 @@ const InitialHero = () => {
             <div className="absolute left-0 right-0 top-0 bottom-0">
                 <div className="relative w-full h-full">
                     {stars.map((star => (
-                        <Star key={star.id} initialLeft={star.id*5} bottom={star.bottom}/>
+                        <Star key={star.id} initialLeft={star.id*5} delay={star.daley}/>
                     )))}
                     
                 </div>

@@ -62,10 +62,14 @@ export default function LoginForm(){
         e.preventDefault();
         
         try {
+            if (!executeRecaptcha){
+                toast.error("Recaptcha não está funcionando.");
+                return
+            }
+            
             const recaptchaSuccess = await GetRecaptcha();
 
             if(!recaptchaSuccess){
-                
                 throw new Error("Você não passou no teste do Recaptcha.");
                 
             }

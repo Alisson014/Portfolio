@@ -1,22 +1,62 @@
 'use client';
+import { useGoogleReCaptcha } from "react-google-recaptcha-v3";
 import { useState, ChangeEvent } from 'react';
 import './ContactForm.css';
+import { toast } from "react-toastify";
 
 export default function ContactForm(){
-
+    const { executeRecaptcha } = useGoogleReCaptcha();   
     const [formData, setFormData] = useState({ name: '', company: '', subject: '', email: '', message: '' });
 
 
-    function onSubmit(e: ChangeEvent<HTMLFormElement>){
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>){
+        
         e.preventDefault();
-        alert(formData.name + formData.company + formData.email + formData.subject + formData.message );
-        setFormData({ name: '', company: '', subject: '', email: '', message: '' });
+        
+        try {
+            if (!executeRecaptcha){
+                toast.error("Recaptcha não está funcionando.");
+                return
+            }
+        
+            const token = await executeRecaptcha("form_submit");
+
+            const responseRecaptcha = await fetch('/api/verify-recaptcha', {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: JSON.stringify({ token })
+            });
+
+
+            const dataRecaptcha = await responseRecaptcha.json()
+            
+
+            if(!dataRecaptcha.success){
+                throw new Error ("Você não passou no teste do Recaptcha.");
+            }
+            
+            if(formData.name == '' || formData.company == '' || formData.subject == '' || formData.email == '' || formData.message == ''){
+                throw new Error ("Todos os dados devem ser preenchidos.");
+            }
+
+            //Contact request
+            toast.success("Mensagem enviada com sucesso!");
+            setFormData({ name: '', company: '', subject: '', email: '', message: '' });
+
+        } catch (e : unknown) {
+            if (e instanceof Error){
+                toast.error(e.message);
+            }
+        }
+
+        
     }
 
     function handleChange(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLTextAreaElement> ){
 
         setFormData({...formData, [e.target?.name]: e.target?.value});
-        console.log(formData);
     }
 
     return(
@@ -32,7 +72,7 @@ export default function ContactForm(){
                 <input title='Preencha com o assunto da mensagem' value={formData.subject} onChange={handleChange} className="w-full" type="text" name="subject" id="subjectId" placeholder="Assunto" required />
                 <input title='Preencha com seu email' value={formData.email} onChange={handleChange} className="w-full" type="email" name="email" id="emailId" placeholder="Email" required />
                 <textarea title='Escreva a mensagem' value={formData.message} onChange={handleChange} className="w-full" name="message"  rows={5} placeholder="Mensagem" required />
-                <button className='w-full bg-gray-800 hover:bg-blue-800 cursor-pointer py-3 rounded-lg' type='submit'>Enviar</button>
+                <button className='w-full bg-gray-800 hover:bg-blue-800 cursor-pointer py-3 rounded-lg active:scale-90 transition-transform duration-200' type='submit'>Enviar</button>
             </form>
         </div>
     );

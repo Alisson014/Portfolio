@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import './Star.css';
 
-export default function Star({initialLeft, bottom}) {
+export default function Star({initialLeft, delay}) {
     const [left, setLeft] = useState(initialLeft);
 
     
@@ -17,7 +17,7 @@ export default function Star({initialLeft, bottom}) {
     }, []);
 
     return(
-        <div className="absolute rounded-full bg-white opacity-70 animationUP"
+        <div className="absolute rounded-full bg-white opacity-70 animationUpleft"
         style={{
             width: '2px',
             height: '2px',

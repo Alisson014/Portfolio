@@ -7,8 +7,8 @@ import { DiJavascript1, DiPostgresql  } from "react-icons/di";
 import { SiNextdotjs, SiPrisma, SiTailwindcss  } from "react-icons/si";
 import { FaReact, FaGitAlt, FaGithub, FaNodeJs, FaPython } from "react-icons/fa";
 
-export default function Bubble({initialLeft, bottom}: { initialLeft: number, bottom: number }) {
-    const [left, setLeft] = useState(initialLeft);
+export default function IconStack({initialLeft, bottom}: { initialLeft: number, bottom: number }) {
+    const [left, setLeft] = useState(initialLeft*10);
 
     const stacks = [
             {
@@ -57,7 +57,7 @@ export default function Bubble({initialLeft, bottom}: { initialLeft: number, bot
     }, []);
 
     return(
-        <div className="p-3 absolute rounded-2xl bg-linear-to-br from-gray-800 to-gray-950 animationUP "
+        <div className="p-3 absolute rounded-2xl bg-linear-to-br from-gray-800 to-gray-950 animationUp z-30 "
         style={{
             left: `${left}%`,
             animationDelay: `${bottom}s`,
