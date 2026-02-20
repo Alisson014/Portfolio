@@ -1,3 +1,4 @@
+'use client';
 import Skill from "./Skill";
 
 import Image from "next/image";
@@ -7,6 +8,23 @@ import { SiNextdotjs, SiPrisma, SiTailwindcss  } from "react-icons/si";
 import { FaReact, FaGitAlt, FaGithub, FaNodeJs, FaPython } from "react-icons/fa";
 
 export default function SkillsSection(){
+    const handleScrollProjects = () => {
+        const pos = document.getElementById('projectId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
+
+    const handleScrollFormation = () => {
+        const pos = document.getElementById('formationId');
+
+        window.scrollTo({
+            top: (pos?.offsetTop ?? 0) - 70,
+            behavior: "smooth", 
+        })
+    }
 
     const skills = [
         {
@@ -85,10 +103,10 @@ export default function SkillsSection(){
                 <h1 className="text-3xl font-semibold text-gray-300 ">Minhas Habilidades</h1>
                 <p className="text-xl opacity-70 text-center max-w-4xl">Projetos de excelência exigem domínio técnico, mas uma colaboração assertiva também. Alinhando <span className="text-blue-400">hard</span> e <span className="text-blue-400">soft</span> skills, sigo em constante evolução para sempre dedicar o melhor de mim a cada novo desafio.</p>
                 <div className="flex gap-2 sm:gap-4 mt-5">
-                    <button className="bg-linear-to-br from-blue-600 to-blue-950 px-4 sm:px-7 py-1 rounded-full text-sm sm:text-lg cursor-pointer hover:from-blue-300 hover:to-indigo-800 hover:text-bg transition-all duration-100">
+                    <button onClick={handleScrollProjects} className="bg-linear-to-br from-blue-600 to-blue-950 px-4 sm:px-7 py-1 rounded-full text-sm sm:text-lg cursor-pointer hover:from-blue-300 hover:to-indigo-800 hover:text-bg transition-all duration-100 clickedAnimation">
                         Conferir Projetos
                     </button>
-                    <button className="bg-linear-to-br from-gray-900 to-blue-950 px-4 sm:px-7 py-1 rounded-full text-sm sm:text-lg cursor-pointer hover:from-blue-300 hover:to-indigo-800 hover:text-bg transition-all duration-100">
+                    <button onClick={handleScrollFormation} className="bg-linear-to-br from-gray-900 to-blue-950 px-4 sm:px-7 py-1 rounded-full text-sm sm:text-lg cursor-pointer hover:from-blue-300 hover:to-indigo-800 hover:text-bg transition-all duration-100 clickedAnimation">
                         Minha Formação
                     </button>
                 </div>

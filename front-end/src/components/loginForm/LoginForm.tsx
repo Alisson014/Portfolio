@@ -150,8 +150,8 @@ export default function LoginForm(){
                             required />
                         </div>
 
-                        <button type="button" className="hover:underline text-center cursor-pointer" onClick={() => setForgottenPassword(true)} > Esqueci a senha </button>
-                        <button type="submit" className="bg-white hover:bg-gray-900/60 hover:text-white text-black w-full py-2 mt-4 rounded-lg text-lg cursor-pointer" > Entrar </button>
+                        <button type="button" className="hover:underline text-center cursor-pointer clickedAnimation" onClick={() => setForgottenPassword(true)} > Esqueci a senha </button>
+                        <button type="submit" className="bg-white hover:bg-gray-900/60 hover:text-white text-black w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Entrar </button>
                     </form>
                 </div>
             </div>
@@ -162,8 +162,8 @@ export default function LoginForm(){
                         <h1 className="text-center text-4xl font-semibold">Esqueci a senha</h1>
                         <p className="text-lg text-center">Clique para enviar um código de acesso ao e-mail cadastrado:</p>
                         <div className="flex w-full justify-center gap-5">
-                            <button type="button" onClick={() => setForgottenPassword(false)} className="bg-transparent border hover:bg-gray-700/80 text-white w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer" > Cancelar </button>
-                            <button type="button" onClick={handleCod} className="bg-white hover:bg-gray-900/60 text-black w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer" > Enviar código </button>
+                            <button type="button" onClick={() => setForgottenPassword(false)} className="bg-transparent border hover:bg-gray-700/80 text-white w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Cancelar </button>
+                            <button type="button" onClick={handleCod} className="bg-white hover:bg-gray-900/60 text-black w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Enviar código </button>
                         </div>
                     </div>
                     <form className="flex flex-col justify-center" onSubmit={onSubmitCod}>
@@ -178,7 +178,7 @@ export default function LoginForm(){
                             autoComplete="off"
                             required 
                         />
-                        <button type="submit" className="bg-white text-black hover:bg-gray-900/60 hover:text-white w-full py-2 mt-4 rounded-lg text-lg cursor-pointer" > Entrar </button>
+                        <button type="submit" className="bg-white text-black hover:bg-gray-900/60 hover:text-white w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Entrar </button>
                     </form>
                 </div>
             </div>

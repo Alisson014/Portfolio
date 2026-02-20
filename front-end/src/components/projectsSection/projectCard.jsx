@@ -15,7 +15,7 @@ export default function ProjectCard({ id, thumbnail, name, color }){
                     <p className="text-md font-medium max-w-46 text-center">{name}</p>
                 </div>
                 <Link href={`/project/${id}`} className="flex justify-end px-8 py-3">
-                    <button className="border px-6 py-1 rounded-full hover:bg-white hover:text-blue-500 cursor-pointer">Ver Mais</button>
+                    <button className="border px-6 py-1 rounded-full hover:bg-white hover:text-blue-500 cursor-pointer clickedAnimation">Ver Mais</button>
                 </Link>
             </div>
         </article>

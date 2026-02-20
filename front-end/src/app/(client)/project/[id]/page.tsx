@@ -4,7 +4,6 @@ import Image from "next/image";
 
 import ProjectNotFound from "../../project-not-found";
 
-import { TiArrowDown } from "react-icons/ti";
 import { GiStripedSun } from "react-icons/gi";
 import Link from "next/link";
 
@@ -29,7 +28,7 @@ export default function ProjectPage() {
         <div className="pt-20  overflow-hidden">
             <div className="w-full relative flex justify-center items-center pt-35 sm:pt-0">
                 <Link href={"/"}>
-                    <button className="absolute top-1 left-1 z-40 hover:underline cursor-pointer text-md">◁ Voltar</button>
+                    <button className="absolute top-1 left-1 z-40 hover:underline cursor-pointer text-md clickedAnimation">◁ Voltar</button>
                 </Link>
                 <Image src={project.thumbnail} alt="Project image" width={1600} height={1600} className="w-full z-10" />
                 <div className="absolute w-full top-0 bottom-0 bg-bg/90 z-20 flex flex-col sm:gap-4 justify-center items-center text-center py-20 sm:py-0 px-2">

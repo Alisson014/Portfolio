@@ -18,3 +18,30 @@ html,
 body{
     @apply bg-bg text-text w-1/1 h-1/1
 }
+
+.clickedAnimation:active{
+    transform: scale(0.9);
+    transition: .2s;
+}
+
+.cursorAnimation {
+    animation: 
+        cursor 5s steps(50) 1s normal both,
+        cursorColor 4s step-end normal both;
+}
+@keyframes cursor {
+    from { width: 0; }
+    to { width: 100%; }
+}
+@keyframes cursorColor{
+    from { border-right-color: #ffffffdd; }
+    to { border-right-color: transparent; }
+}
+
+.appearTextP{
+    animation: appearTextP 1s ease-in-out;
+}
+@keyframes appearTextP{
+    from { margin-top: 20px; opacity: 0; }
+    to { margin-top: 0px; opacity: 1.5; }
+}

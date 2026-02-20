@@ -32,7 +32,7 @@ export default function FormationSection(){
     ]
 
     return (
-        <section>
+        <section id="formationId">
             <header className="mt-24 flex flex-col gap-4 items-center">
                 <LuGraduationCap className="text-5xl sm:text-7xl text-blue-800 " />
                 <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium bg-linear-to-r from-gray-700 to-blue-800 bg-clip-text text-transparent">Formação Acadêmica</h1>

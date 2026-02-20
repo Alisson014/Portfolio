@@ -16,22 +16,22 @@ export default function SocialMedia(){
             <p className="text-gray-400 text-center">Senta-se à vontade para me contactar pelas seguintes redes sociais também</p>
             <div className="flex justify-center items-center gap-6 sm:gap-12 pt-4 text-blue-600 px-1">
                 <Link href="https://www.linkedin.com/in/jos%C3%A9-alisson-dias-da-costa-59375b322/" target="_blank">
-                    <div className="bg-gray-900 rounded-full p-1 ">
+                    <div className="bg-gray-900 rounded-full p-1 clickedAnimation">
                         <CiLinkedin  size={46} />
                     </div>
                 </Link>
                 <Link href="https://github.com/Alisson014/" target="_blank">
-                    <div className="bg-gray-900 rounded-full p-2.5">
+                    <div className="bg-gray-900 rounded-full p-2.5 clickedAnimation">
                         <VscGithub size={35} />
                     </div>
                 </Link>
                 <Link href="mailto:josealissondiasdacostaf10@gmail.com" target="_blank" type="mailto" >
-                    <div className="bg-gray-900 rounded-full p-2">
+                    <div className="bg-gray-900 rounded-full p-2 clickedAnimation">
                         <RiMailCheckLine size={37} />
                     </div>  
                 </Link>
                 <Link href="https://www.instagram.com/j.alissons014/" target="_blank">
-                    <div className="bg-gray-900 rounded-full p-2.5">
+                    <div className="bg-gray-900 rounded-full p-2.5 clickedAnimation">
                         <SiInstagram size={36} />
                     </div>
                 </Link>

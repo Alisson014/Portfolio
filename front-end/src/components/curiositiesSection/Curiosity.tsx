@@ -22,7 +22,7 @@ export default function Curiosity({image, name, description, link } : {image: st
                     </div>
 
                     <Link href={link} target="_blank">
-                        <button className="bg-gray-800 px-4 py-2 rounded-xl cursor-pointer hover:bg-gray-950">
+                        <button className="bg-gray-800 px-4 py-2 rounded-xl cursor-pointer hover:bg-gray-950 clickedAnimation">
                             Ver Mais
                         </button>
                     </Link>

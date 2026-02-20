@@ -12,14 +12,14 @@ export default function HeroFooter(){
                     <div className="flex flex-col">
                         <Image src='/images/smile.png' alt="little person caracter" width={130} height={130}/>
                         <Link className="-mt-8" href="/contact" >
-                            <button className="bg-white text-black hover:bg-blue-500 hover:text-white px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer">
+                            <button className="bg-white text-black hover:bg-blue-500 hover:text-white px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer clickedAnimation">
                                 Contato
                             </button>
                         </Link>
                     </div>
 
                     <Link href="/Curriculo (1).pdf" target="_blank" >
-                        <button className="bg-gray-800 text-white hover:bg-blue-500 px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer">
+                        <button className="bg-gray-800 text-white hover:bg-blue-500 px-4 py-1 sm:px-8 sm:py-2 rounded-md font-medium text-lg cursor-pointer clickedAnimation">
                             Currículo
                         </button>
                     </Link>

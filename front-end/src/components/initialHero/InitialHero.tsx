@@ -47,7 +47,7 @@ const InitialHero = () => {
                     
                 </p>
                 <button onClick={handleScroll}
-                  className="bg-linear-to-br from-blue-800 to-indigo-950 px-7 py-1 rounded-full text-lg cursor-pointer border-2 border-transparent hover:border-indigo-400"
+                  className="bg-linear-to-br from-blue-800 to-indigo-950 px-7 py-1 rounded-full text-lg cursor-pointer border-2 border-transparent hover:border-indigo-400 clickedAnimation"
                 >
                     Ler mais
                 </button>
