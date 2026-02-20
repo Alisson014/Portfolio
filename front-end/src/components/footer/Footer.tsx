@@ -1,4 +1,5 @@
 'use client';
+import { usePathname } from "next/navigation";
 
 import Image from "next/image";
 import HeroFooter from "./HeroFooter";
@@ -9,6 +10,8 @@ import Link from "next/link";
 
 
 export default function Footer(){
+    const path = usePathname();
+
     const handleScrollHome = () => {
         window.scrollTo({
             top: 0,
@@ -45,10 +48,24 @@ export default function Footer(){
 
 
     return(
-        <footer className="flex flex-col items-center w-full pt-18">
-            <SocialMedia />
-            <HeroFooter />
-            <div className="flex justify-between items-start flex-wrap pt-65 px-4 sm:px-14 pb-10 w-full bg-black border-t border-t-gray-900 -mt-50 z-10">
+        <footer className="flex flex-col items-center w-full" style={{ paddingTop: `${path == '/' ? '72px' : '0px'}` }}>
+            {
+                path == '/' ? (
+                    <SocialMedia />
+                ) : (
+                    <div className="hiddenn"></div>
+                )
+            }
+
+            {
+                path == '/' ? (
+                    <HeroFooter />
+                ) : (
+                    <div className="hiddenn"></div>
+                )
+            }
+            <div style={{paddingTop: `${path == '/' ? '260px' : '50px'}`, marginTop: `${path == '/' ? '-200px': '0px'}`}} 
+            className="flex justify-between items-start flex-wrap px-4 sm:px-14 pb-10 w-full bg-black border-t border-t-gray-900">
                 <Image className="scale-80 md:scale-100" src={"/images/logo-hero-1.png"} alt="My logo image" width={300} height={300} />
 
                 <div className="max-w-100">

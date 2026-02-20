@@ -8,7 +8,6 @@ import FormationSection from "../../components/formationSection/FormationSection
 import Image from "next/image";
 import ProjectSection from "../../components/projectsSection/ProjectSection";
 import CuriositiesSection from "../../components/curiositiesSection/CuriositiesSection";
-import Footer from "../../components/footer/Footer";
 
 export default function Home() {
     return (
@@ -27,7 +26,6 @@ export default function Home() {
             <FormationSection />
             <ProjectSection />
             <CuriositiesSection />
-            <Footer />
         </main>
     );
 }
