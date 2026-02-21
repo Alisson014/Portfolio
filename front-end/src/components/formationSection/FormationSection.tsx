@@ -1,35 +1,15 @@
 import Certificates from "./certificate";
+import { Formation } from "../mockedData/MockedData";
 
 import Image from "next/image";
 import { LuGraduationCap } from "react-icons/lu";
 import { GoDotFill } from "react-icons/go";
-import { LuSchool } from "react-icons/lu";
 import { FaComputer } from "react-icons/fa6";
 
 
 
 export default function FormationSection(){
 
-    const formations = [
-        {
-            id: 1,
-            name: 'IFCE',
-            description: 'Técnico em informática para internet pelo Instituto Federal do Ceará',
-            icon: <LuSchool className="text-5xl p-1 text-blue-800 bg-blue-500/10 rounded-lg group-hover:scale-110 transition-transform" />,
-        },
-        {
-            id: 2,
-            name: 'C-Jovem',
-            description: 'Desenvolvimento FullStack pelo programa Capacita Brasil / C-Jovem',
-            icon: <FaComputer className="text-5xl p-1 text-blue-800 bg-blue-500/10 rounded-lg group-hover:scale-110 transition-transform" />,
-        },
-        {
-            id: 3,
-            name: 'UFCA',
-            description: 'Engenharia de Software',
-            icon: <FaComputer className="text-5xl p-1 text-blue-800 bg-blue-500/10 rounded-lg group-hover:scale-110 transition-transform" />,
-        }
-    ]
 
     return (
         <section id="formationId">
@@ -53,10 +33,10 @@ export default function FormationSection(){
 
                     <div className="max-h-70 overflow-y-scroll [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent">
                         {
-                            formations.map( f => (
+                            Formation.map( f => (
                                 <article key={f.id} className="flex gap-4 w-full bg-linear-to-br from-gray-800/90 to-gray-900/70 p-2 mt-4 rounded-lg hover:from-gray-900 transition-colors duration-500 group">
                                     <div className="flex justify-center items-center">
-                                        {f.icon}
+                                        <FaComputer className="text-5xl p-1 text-blue-800 bg-blue-500/10 rounded-lg group-hover:scale-110 transition-transform" />
                                     </div>
                                     <div>
                                         <h1 className="text-sm font-semibold">{f.name}</h1>

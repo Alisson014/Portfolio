@@ -1,4 +1,4 @@
-
+import { Curiosities } from "../mockedData/MockedData";
 import Curiosity from "./Curiosity";
 
 import { MdPersonSearch } from "react-icons/md";
@@ -6,11 +6,6 @@ import { MdPersonSearch } from "react-icons/md";
 
 export default function CuriositiesSection(){
 
-    const curiosities = [
-        { id: 0, image: '/images/curiosity-01.png', name: 'Reportagem', description: 'Presença na mídia local como aluno destaque na região.', link: 'https://globoplay.globo.com/v/13343428/' },
-        { id: 1, image: '/images/curiosity-02.png', name: 'Revista IFCE', description: 'Ocupando um pouco a capa da revista ifce, edição de 2025', link: 'https://www.calameo.com/books/005132292eaa19c6ff2ab' },
-        { id: 2, image: '/images/curiosity-03.png', name: 'Notícia no IFCE', description: 'Reconhecimento pela trajetória e resultados em competições.', link: 'https://portal.ifce.edu.br/campus/crato/noticias/estudantes-conquistaram-26-premiacoes-em-olimpiadas-do-conhecimento/' },
-    ]
 
     return(
         <section id="curiosityId" className="w-full mt-18 py-18 px-6 sm:px-12 flex flex-col bg-radial from-[#020c2b] to-bg to-60%">
@@ -24,7 +19,7 @@ export default function CuriositiesSection(){
 
             <div className="flex justify-center flex-wrap mt-10 gap-7">
                 {
-                    curiosities.map(c => (
+                    Curiosities.map(c => (
                         <Curiosity key={c.id} image={c.image} name={c.name} description={c.description} link={c.link} />
                     ))
                 }

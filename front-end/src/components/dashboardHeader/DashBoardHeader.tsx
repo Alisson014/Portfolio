@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 
 import { MdOutlineMailOutline, MdDeleteOutline } from "react-icons/md";
