@@ -59,15 +59,15 @@ export default function DashboardHome(){
                             <h1 className="text-sm sm:text-md">Mensagens recebidas</h1>
                         </div>
                     </header>
-                    <table className="flex flex-col w-full mt-2 h-4/5 messageTable">
-                        <thead className="bg-gray-800/60 flex flex-col justify-around pl-4 rounded-lg">
+                    <table className="flex flex-col w-full h-4/5 messageTable">
+                        <thead className="bg-gray-800/60 flex flex-col justify-around pl-4 rounded-t-lg">
                             <tr className="grid grid-cols-3 py-2">
                                 <td>Empresa</td>
                                 <td>Assunto</td>
                                 <td>Ação</td>
                             </tr>
                         </thead>
-                        <tbody className="mt-2 rounded-lg overflow-y-scroll">
+                        <tbody className="rounded-b-lg overflow-y-scroll">
                             <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
                                 <td>Netflix</td>
                                 <td title="Confirmação de vínculo">Confirmação de vínculo</td>

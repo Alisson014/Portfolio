@@ -18,14 +18,12 @@
     color: rgb(128, 128, 128);
 }
 
-.messageTable tbody tr:nth-child(2n){
+.messageTable tbody tr{
     background-color: black;
-}
-.messageTable tbody tr:nth-child(2n+1){
-    background-color: #071220;
+    border-bottom: 1px solid #182531;
 }
 
 .messageTable tbody tr:hover{
-    background-color: #182531;
+    background-color: #0b1a29;
     transition: .4s;
 }

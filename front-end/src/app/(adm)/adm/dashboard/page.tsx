@@ -8,6 +8,7 @@ import { useContext } from "react";
 import DashboardHeader from "@/src/components/dashboardHeader/DashBoardHeader";
 import DashBoardMenu from "@/src/components/dashboardMenu/DashboardMenu";
 import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
+import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe";
 
 
 export default function DashboardPage(){
@@ -23,7 +24,7 @@ export default function DashboardPage(){
         },
         {
             id: "AboutMe",
-            component: <div className="h-full w-full appearAnimation">AboutMe</div>
+            component: <DashboardAboutMe actionType={actionType} />
         },
         {
             id: "Skills",
