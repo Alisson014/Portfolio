@@ -17,14 +17,14 @@ export default function DashboardAboutMe( { actionType } : { actionType: string 
     },[isUpdating]);
 
     return(
-        <div className="w-full py-4 appearAnimation">
+        <div className="w-full p-4 mt-4 bg-linear-to-br from-gray-900 to-gray-950 border border-gray-800 rounded-2xl appearAnimation">
             <header className="flex items-center gap-2"> 
                 <LuSquarePen size={35} />
-                <h1 className="text-3xl font-semibold">Sobre Mim</h1>
+                <h1 className="text-lg sm:text-3xl font-semibold">Sobre Mim</h1>
             </header>
 
-            <div className="flex justify-center items-start p-4 mt-4">
-                <div className="pl-2 transition-all duration-500" style={{ width: `${ actionType == 'update' ? '50%' : '100%' }` }}>
+            <div className={`grid ${actionType == 'update' ? 'md:grid-cols-2' : 'grid-cols-1'} place-items-stretch mt-4 transition-all duration-500`}>
+                <div className="w-full pl-2">
                     <h2 className="text-xl font-medium">Resumo</h2>
                     <p className="mt-1">{aboutMe.resume}</p>
                     <br/>
