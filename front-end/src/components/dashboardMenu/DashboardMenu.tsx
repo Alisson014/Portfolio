@@ -13,6 +13,7 @@ import { GoProjectSymlink } from "react-icons/go";
 import { FiAward } from "react-icons/fi";
 import { RiStackLine } from "react-icons/ri";
 import { CiLogout } from "react-icons/ci";
+import { HiHome } from "react-icons/hi2";
 
 type DashBoardMenuType = {
     visible: boolean,
@@ -24,8 +25,8 @@ type DashBoardMenuType = {
 export default function DashBoardMenu({ visible, data, setVisible, setData } : DashBoardMenuType){
 
     return(
-        <nav className="fixed left-4 h-screen bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-700 rounded-2xl text-gray-400 whitespace-nowrap p-4 overflow-hidden transition-all duration-500" 
-            style={{ width: `${visible ? '17.5rem' : '5rem'}` }}
+        <nav className="fixed left-4 h-screen bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-700 rounded-2xl text-gray-400 whitespace-nowrap p-4 overflow-x-hidden overflow-y-scroll transition-all duration-500" 
+            style={{ width: `${visible ? '17.5rem' : '5rem'}`, scrollbarWidth: "none" }}
         >
             <button onClick={() => setVisible(prev => !prev)} className=" rounded-lg">
                 {
@@ -44,6 +45,13 @@ export default function DashBoardMenu({ visible, data, setVisible, setData } : D
             
 
             <ul className="w-full mt-10">
+                <li className="w-full p-1.5">
+                    <button onClick={() => setData("Home")} className="w-full flex items-center gap-8 border border-transparent hover:border-gray-400 hover:bg-black active:scale-95 transition-transform duration-100 cursor-pointer py-2 rounded-lg"
+                            style={{ background: `${data == 'Home' ? 'black' : 'transparent' }` }}
+                        >
+                        <HiHome className="shrink-0" size={32} /> Home
+                    </button>
+                </li>
                 <li className="w-full p-1.5">
                     <button onClick={() => setData("AboutMe")} className="w-full flex items-center gap-8 border border-transparent hover:border-gray-400 hover:bg-black active:scale-95 transition-transform duration-100 cursor-pointer py-2 rounded-lg"
                             style={{ background: `${data == 'AboutMe' ? 'black' : 'transparent' }` }}
@@ -90,7 +98,7 @@ export default function DashBoardMenu({ visible, data, setVisible, setData } : D
             {/* <div className="flex justify-center w-full">
                 <hr style={{ width: `${visible ? '100%' : '50%'}` }} className="border-none h-0.5 mt-12 rounded-full bg-gray-700 transition-all duration-500"/>
             </div> */}
-            <div className="w-full p-1.5 mt-12">
+            <div className="w-full p-1.5 mt-4">
                 <button className="w-full flex items-center gap-8 border py-2 rounded-lg active:scale-95 transition-transform duration-100 cursor-pointer hover:bg-black">
                     <CiLogout className="shrink-0" size={28} /> Encerrar sessão
                 </button>

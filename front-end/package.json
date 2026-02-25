@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.575.0",
     "next": "16.1.1",
     "nookies": "^2.5.2",
     "pdfjs-dist": "^5.4.296",
@@ -17,7 +20,10 @@
     "react-google-recaptcha-v3": "^1.11.0",
     "react-icons": "^5.5.0",
     "react-pdf": "^10.3.0",
-    "react-toastify": "^11.0.5"
+    "react-toastify": "^11.0.5",
+    "recharts": "^2.15.4",
+    "tailwind-merge": "^3.5.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

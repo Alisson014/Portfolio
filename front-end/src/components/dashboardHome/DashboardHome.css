@@ -1,0 +1,31 @@
+
+.messageTable tbody::-webkit-scrollbar{
+    width: 8px;
+}
+.messageTable tbody::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+.messageTable tbody::-webkit-scrollbar-thumb{
+    border-radius: 50px;
+    background-color: #1b2630;
+}
+
+.messageTable tbody td{
+    max-width: 80%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: rgb(128, 128, 128);
+}
+
+.messageTable tbody tr:nth-child(2n){
+    background-color: black;
+}
+.messageTable tbody tr:nth-child(2n+1){
+    background-color: #071220;
+}
+
+.messageTable tbody tr:hover{
+    background-color: #182531;
+    transition: .4s;
+}

@@ -7,23 +7,60 @@ import { useContext } from "react";
 
 import DashboardHeader from "@/src/components/dashboardHeader/DashBoardHeader";
 import DashBoardMenu from "@/src/components/dashboardMenu/DashboardMenu";
-
+import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
 
 
 export default function DashboardPage(){
     const { user } = useContext(AuthContext);
     const [isVisible, setIsVisible] = useState<boolean>(true);
-    const [data, setData] = useState<string>('AboutMe');
+    const [data, setData] = useState<string>('Home');
     const [actionType, setActionType] = useState<string>('get');
 
+    const components = [
+        {
+            id: "Home",
+            component: <DashboardHome/>
+        },
+        {
+            id: "AboutMe",
+            component: <div className="h-full w-full appearAnimation">AboutMe</div>
+        },
+        {
+            id: "Skills",
+            component: <div className="h-full w-full appearAnimation">Skills</div>
+        },
+        {
+            id: "Formation",
+            component: <div className="h-full w-full appearAnimation">Formation</div>
+        },
+        {
+            id: "Certificates",
+            component: <div className="h-full w-full appearAnimation">Certificates</div>
+        },
+        {
+            id: "Projects",
+            component: <div className="h-full w-full appearAnimation">Projects</div>
+        },
+        {
+            id: "Curiosities",
+            component: <div className="h-full w-full appearAnimation">Curiosities</div>
+        },
+        
+    ]
+
     return(
-        <div className="w-full h-full p-4 bg-radial from-blue-950/20 to-black transition-all duration-500"
-            style={{ paddingLeft: `${isVisible ? '19.5rem' : '7rem'}` }}
+        <div className="w-full p-4 bg-radial from-blue-950/40 to-black transition-all duration-500"
+            style={{ paddingLeft: `${isVisible ? '19.5rem' : '6.5rem'}` }}
         >
             <DashBoardMenu visible={isVisible} setVisible={setIsVisible} setData={setData} data={data} />
             <DashboardHeader userName={user.name} actionType={actionType} setActionType={setActionType} />
-            <button onClick={() => setIsVisible(prev => !prev)}>Menu - </button>
-            {data} - {actionType}
+            
+
+            {
+                components.find(c => c.id == data)?.component
+            }
+            
+            <br/>
         </div>
     );
 }
