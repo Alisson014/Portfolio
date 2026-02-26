@@ -7,7 +7,7 @@ export default function Skill({icon, name, description}){
             <div className="flex justify-center items-center p-2 border-2 border-blue-950 rounded-full bg-linear-to-br from-gray-950 to-black group-hover:scale-110 group-hover:border-blue-800 transition-all duration-500">
                 <Image className="opacity-60 group-hover:opacity-100 transition-opacity duration-500" src={icon} alt="Skill icon" width={40} height={40}/>
             </div>
-                <h1 className="text-xl">{name}</h1>
+                <h1 className="text-xl text-center">{name}</h1>
             <div className=" text-center">
                 <p className="text-gray-500 max-w-50">{description}</p>
             </div>

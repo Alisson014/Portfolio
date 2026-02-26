@@ -23,7 +23,7 @@ export default function DashboardAboutMe( { actionType } : { actionType: string 
                 <h1 className="text-lg sm:text-3xl font-semibold">Sobre Mim</h1>
             </header>
 
-            <div className={`grid ${actionType == 'update' ? 'md:grid-cols-2' : 'grid-cols-1'} place-items-stretch mt-4 transition-all duration-500`}>
+            <div className={`flex flex-col-reverse md:grid ${actionType == 'update' ? 'md:grid-cols-2' : 'grid-cols-1'} place-items-stretch mt-4 transition-all duration-500`}>
                 <div className="w-full pl-2">
                     <h2 className="text-xl font-medium">Resumo</h2>
                     <p className="mt-1">{aboutMe.resume}</p>

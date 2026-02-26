@@ -7,7 +7,7 @@ export type AbouteMeType = {
 
 export type SkillsType = {
     id: number,
-    icon: string,
+    icon: string | File,
     name: string,
     description: string,
 }

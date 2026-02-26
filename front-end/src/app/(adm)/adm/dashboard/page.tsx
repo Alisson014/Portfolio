@@ -9,6 +9,7 @@ import DashboardHeader from "@/src/components/dashboardHeader/DashBoardHeader";
 import DashBoardMenu from "@/src/components/dashboardMenu/DashboardMenu";
 import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
 import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe";
+import DashboardSkills from "@/src/components/dashboardSkills/DashboardSkills";
 
 
 export default function DashboardPage(){
@@ -28,7 +29,7 @@ export default function DashboardPage(){
         },
         {
             id: "Skills",
-            component: <div className="h-full w-full appearAnimation">Skills</div>
+            component: <DashboardSkills actionType={actionType} />
         },
         {
             id: "Formation",

@@ -49,7 +49,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
     }
 
     return(
-        <div className="w-full md:-mt-12 bg-linear-to-br from-gray-900 to-gray-950 border border-gray-800 p-4 rounded-lg appearAnimation">
+        <div className="w-full mb-4 md:-mt-12 bg-linear-to-br from-gray-900 to-gray-950 border border-gray-800 p-4 rounded-lg appearAnimation">
             <header className="flex items-center gap-2">
                 <GrUpdate size={22} />
                 <h2 className="text-xl font-medium"> Atualizar dados</h2>
