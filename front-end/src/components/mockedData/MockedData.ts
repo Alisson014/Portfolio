@@ -22,7 +22,7 @@ export type CertificatesType = {
     id: number,
     name: string,
     company: string,
-    pdf: string,
+    pdf: string | File,
 }
 
 export type StackType = {

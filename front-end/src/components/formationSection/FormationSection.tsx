@@ -1,4 +1,4 @@
-import Certificates from "./certificate";
+import Certificates from "./Certificates";
 import { Formation } from "../mockedData/MockedData";
 
 import Image from "next/image";

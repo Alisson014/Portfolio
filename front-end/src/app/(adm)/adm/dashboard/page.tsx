@@ -11,6 +11,8 @@ import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
 import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe";
 import DashboardSkills from "@/src/components/dashboardSkills/DashboardSkills";
 
+import DashboardCertificates from "@/src/components/dashboardCertificates/DashboardCertificates";
+
 
 export default function DashboardPage(){
     const { user } = useContext(AuthContext);
@@ -37,7 +39,7 @@ export default function DashboardPage(){
         },
         {
             id: "Certificates",
-            component: <div className="h-full w-full appearAnimation">Certificates</div>
+            component: <DashboardCertificates actionType={actionType} />
         },
         {
             id: "Projects",
@@ -51,7 +53,7 @@ export default function DashboardPage(){
     ]
 
     return(
-        <div className="w-full p-4 bg-radial from-blue-950/40 to-black transition-all duration-500"
+        <div className="w-full p-4 transition-all duration-500"
             style={{ paddingLeft: `${isVisible ? '19.5rem' : '6.5rem'}` }}
         >
             <DashBoardMenu visible={isVisible} setVisible={setIsVisible} setData={setData} data={data} />

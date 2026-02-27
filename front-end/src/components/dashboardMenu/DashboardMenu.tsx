@@ -25,7 +25,7 @@ type DashBoardMenuType = {
 export default function DashBoardMenu({ visible, data, setVisible, setData } : DashBoardMenuType){
 
     return(
-        <nav className="fixed left-4 h-screen bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-700 rounded-2xl text-gray-400 whitespace-nowrap p-4 overflow-x-hidden overflow-y-scroll transition-all duration-500" 
+        <nav className="fixed left-4 h-screen bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-700 rounded-2xl text-gray-400 whitespace-nowrap p-4 overflow-x-hidden z-50 overflow-y-scroll transition-all duration-500" 
             style={{ width: `${visible ? '17.5rem' : '5rem'}`, scrollbarWidth: "none" }}
         >
             <button onClick={() => setVisible(prev => !prev)} className=" rounded-lg">

@@ -18,7 +18,7 @@
 
 html,
 body{
-    @apply bg-bg text-text w-1/1 h-1/1
+    @apply bg-radial from-[#000d27] to-black text-text w-1/1 h-1/1
 }
 
 body::-webkit-scrollbar{
@@ -29,7 +29,7 @@ body::-webkit-scrollbar-thumb{
     border-radius: 50px;
 }
 body::-webkit-scrollbar-track{
-    background-color: transparent;
+    background-color: black;
 }
 
 .scrollBar::-webkit-scrollbar{
