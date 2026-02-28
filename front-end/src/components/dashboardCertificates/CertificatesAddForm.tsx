@@ -66,7 +66,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
 
             // Post request
 
-            toast.success("SKill Adicionada com sucesso");
+            toast.success("Certificado adicionado com sucesso");
             setCertificateFormData({ id: 0, name: '', company: '', pdf: '' });
             removeFile();
             

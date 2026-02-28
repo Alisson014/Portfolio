@@ -12,6 +12,7 @@ import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe
 import DashboardSkills from "@/src/components/dashboardSkills/DashboardSkills";
 
 import DashboardCertificates from "@/src/components/dashboardCertificates/DashboardCertificates";
+import DashboardFormation from "@/src/components/dashboardFormation/DashboardFormation";
 
 
 export default function DashboardPage(){
@@ -35,7 +36,7 @@ export default function DashboardPage(){
         },
         {
             id: "Formation",
-            component: <div className="h-full w-full appearAnimation">Formation</div>
+            component: <DashboardFormation actionType={actionType} />
         },
         {
             id: "Certificates",

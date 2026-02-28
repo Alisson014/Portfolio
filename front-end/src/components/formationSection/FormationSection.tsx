@@ -4,9 +4,7 @@ import { Formation } from "../mockedData/MockedData";
 import Image from "next/image";
 import { LuGraduationCap } from "react-icons/lu";
 import { GoDotFill } from "react-icons/go";
-import { FaComputer } from "react-icons/fa6";
-
-
+import FormationCard from "./FormationCard";
 
 export default function FormationSection(){
 
@@ -34,15 +32,7 @@ export default function FormationSection(){
                     <div className="max-h-70 overflow-y-scroll [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent">
                         {
                             Formation.map( f => (
-                                <article key={f.id} className="flex gap-4 w-full bg-linear-to-br from-gray-800/90 to-gray-900/70 p-2 mt-4 rounded-lg hover:from-gray-900 transition-colors duration-500 group">
-                                    <div className="flex justify-center items-center">
-                                        <FaComputer className="text-5xl p-1 text-blue-800 bg-blue-500/10 rounded-lg group-hover:scale-110 transition-transform" />
-                                    </div>
-                                    <div>
-                                        <h1 className="text-sm font-semibold">{f.name}</h1>
-                                        <p className="mt-1 text-xs text-text opacity-60">{f.description}</p>
-                                    </div>
-                                </article>
+                                <FormationCard key={f.id} id={f.id} name={f.name} description={f.description} isClient={true} />
                             ) )
                         }
                     </div>
