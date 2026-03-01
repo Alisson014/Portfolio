@@ -10,6 +10,7 @@ import DashBoardMenu from "@/src/components/dashboardMenu/DashboardMenu";
 import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
 import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe";
 import DashboardSkills from "@/src/components/dashboardSkills/DashboardSkills";
+import DashboardCuriosities from "@/src/components/dashboardCuriosities/DashboardCuriosities";
 
 import DashboardCertificates from "@/src/components/dashboardCertificates/DashboardCertificates";
 import DashboardFormation from "@/src/components/dashboardFormation/DashboardFormation";
@@ -48,7 +49,7 @@ export default function DashboardPage(){
         },
         {
             id: "Curiosities",
-            component: <div className="h-full w-full appearAnimation">Curiosities</div>
+            component: <DashboardCuriosities actionType={actionType} />
         },
         
     ]

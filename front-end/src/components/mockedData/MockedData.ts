@@ -45,7 +45,7 @@ export type ProjectsType = {
 export type CuriositiesType = {
     id: number,
     name: string,
-    image: string,
+    image: string | File,
     description: string,
     link: string,
 }
