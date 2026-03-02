@@ -31,15 +31,24 @@ export type StackType = {
     description: string,
 }
 
+export type ImportProjectType = {
+    id: number,
+    name: string,
+    html_url: string,
+    description: string,
+    homepage: string,
+    created_at: string,
+}
+
 export type ProjectsType = {
     id: number,
     name: string,
     color: string,
-    thumbnail: string,
+    thumbnail: string | File,
     gitHub: string,
     link: string,
     description: string,
-    stacks: Array<StackType>,
+    stacks: Array<string>,
 }
 
 export type CuriositiesType = {
@@ -186,134 +195,54 @@ export const  Certificates : Array<CertificatesType> = [
 
 export const Projects : Array<ProjectsType> = [
     { 
-        id: 0, 
-        name: 'Web portfolio', 
+        id: 1126822556, 
+        name: 'Portfolio', 
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse provident ipsa vel omnis cupiditate quibusdam, blanditiis porro id iure doloribus doloremque, pariatur dignissimos tempore repellat, velit perferendis reiciendis suscipit deserunt.', 
         thumbnail: '/images/thumbnail-p-01.jpg', 
         color: '#2196F3', 
         gitHub: 'https://github.com/Alisson014/Portfolio', 
         link: "#",
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ], 
+        stacks: ["HTML", "CSS", "JavaScript"], 
     },
     { 
-        id: 1, 
+        id: 1056212441, 
         name: 'Monitoramento climático', 
         description: 'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae itaque nisi nulla dolore vitae labore totam asperiores suscipit distinctio aspernatur. Cupiditate sint quisquam fugit eos molestiae harum vitae quam dolor. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae itaque nisi nulla dolore vitae labore totam asperiores suscipit distinctio aspernatur. Cupiditate sint quisquam fugit eos molestiae harum vitae quam dolor. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae itaque nisi nulla dolore vitae labore totam asperiores suscipit distinctio aspernatur. Cupiditate sint quisquam fugit eos molestiae harum vitae quam dolor. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae itaque nisi nulla dolore vitae labore totam asperiores suscipit distinctio aspernatur. Cupiditate sint quisquam fugit eos molestiae harum vitae quam dolor.', 
         thumbnail: '/images/thumbnail-p-02.png', 
         color: '#00BCD4', 
         gitHub: 'https://github.com/Alisson014/MonitoramentoClimatico', 
         link: "https://monitoramento-climatico-henna.vercel.app/", 
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ], 
+        stacks: ["HTML", "CSS", "JavaScript"],
     },
     { 
-        id: 2, 
+        id: 907513482, 
         name: 'Saúde em Fortaleza', 
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse provident ipsa vel omnis cupiditate quibusdam, blanditiis porro id iure doloribus doloremque, pariatur dignissimos tempore repellat, velit perferendis reiciendis suscipit deserunt.', 
         thumbnail: '/images/thumbnail-p-03.png', 
         color: '#FDD835', 
         gitHub: 'https://github.com/Alisson014/PrefeituraDeFortaleza', 
         link: "https://alisson014.github.io/PrefeituraDeFortaleza/",
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ],
+        stacks: ["HTML", "CSS", "JavaScript"],
     },
     { 
-        id: 3, 
+        id: 885832802, 
         name: 'Jeriquaquara', 
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse provident ipsa vel omnis cupiditate quibusdam, blanditiis porro id iure doloribus doloremque, pariatur dignissimos tempore repellat, velit perferendis reiciendis suscipit deserunt.', 
         thumbnail: '/images/thumbnail-p-04.png', 
         color: '#0ea5e9', 
         gitHub: 'https://github.com/Alisson014/JeriGit', 
         link: "https://alisson014.github.io/JeriGit/",
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ],
+        stacks: ["HTML", "CSS", "JavaScript"],
     },
     { 
-        id: 4, 
+        id: 875029090, 
         name: 'Livraria HTML', 
         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse provident ipsa vel omnis cupiditate quibusdam, blanditiis porro id iure doloribus doloremque, pariatur dignissimos tempore repellat, velit perferendis reiciendis suscipit deserunt.', 
         thumbnail: '/images/thumbnail-p-05.png', 
         color: '#3F51B5', 
         gitHub: 'https://github.com/Alisson014/All-Books', 
         link: "https://all-books.vercel.app/",
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ],
+        stacks: ["HTML", "CSS", "JavaScript"],
     },
     { 
         id: 5, 
@@ -323,23 +252,7 @@ export const Projects : Array<ProjectsType> = [
         color: '#10b981', 
         gitHub: 'https://github.com/vaghenrique/FSN2-GRUPO06-VIDEOGAME', 
         link: "https://vaghenrique.github.io/FSN2-GRUPO06-VIDEOGAME/",
-        stacks: [
-            {
-                id: 0,
-                name: "Desenvolvimento Web", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 1,
-                name: "Node JS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }, 
-            {
-                id: 2,
-                name: "Tailwind CSS", 
-                description: "Lorem ipsun dolor sit amet consectetur adipisicing"
-            }
-        ],
+        stacks: ["HTML", "CSS", "JavaScript"],
     },
 ];
 

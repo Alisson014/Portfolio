@@ -11,7 +11,7 @@ import DashboardHome from "@/src/components/dashboardHome/DashboardHome";
 import DashboardAboutMe from "@/src/components/dashboardAboutMe/DashboardAboutMe";
 import DashboardSkills from "@/src/components/dashboardSkills/DashboardSkills";
 import DashboardCuriosities from "@/src/components/dashboardCuriosities/DashboardCuriosities";
-
+import DashboardProjects from "@/src/components/dashboardProjects/DashboardProjects";
 import DashboardCertificates from "@/src/components/dashboardCertificates/DashboardCertificates";
 import DashboardFormation from "@/src/components/dashboardFormation/DashboardFormation";
 
@@ -45,7 +45,7 @@ export default function DashboardPage(){
         },
         {
             id: "Projects",
-            component: <div className="h-full w-full appearAnimation">Projects</div>
+            component: <DashboardProjects actionType={actionType} />
         },
         {
             id: "Curiosities",

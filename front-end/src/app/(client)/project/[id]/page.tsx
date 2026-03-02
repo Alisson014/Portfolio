@@ -1,16 +1,18 @@
 'use client';
-import { Projects } from "@/src/components/mockedData/MockedData";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
+
+import { Projects } from "@/src/components/mockedData/MockedData";
 import ProjectNotFound from "../../project-not-found";
 
 import { GiStripedSun } from "react-icons/gi";
-import Link from "next/link";
 
 
 export default function ProjectPage() {
     const { id } = useParams();
+    const router = useRouter();
 
     const project = Projects.find(p => p.id == Number(id));
 
@@ -19,10 +21,10 @@ export default function ProjectPage() {
     return(
         <div className="pt-20  overflow-hidden">
             <div className="w-full relative flex justify-center items-center pt-35 sm:pt-0">
-                <Link href={"/"}>
-                    <button className="absolute top-1 left-1 z-40 hover:underline cursor-pointer text-md clickedAnimation">◁ Voltar</button>
-                </Link>
-                <Image src={project.thumbnail} alt="Project image" width={1600} height={1600} className="w-full z-10" />
+                
+                <button onClick={router.back} className="absolute top-1 left-1 z-40 hover:underline cursor-pointer text-md clickedAnimation">◁ Voltar</button>
+                
+                <Image src={typeof project.thumbnail == "string" ? project.thumbnail : '#'} alt="Project image" width={1600} height={1600} className="w-full z-10" />
                 <div className="absolute w-full top-0 bottom-0 bg-bg/90 z-20 flex flex-col sm:gap-4 justify-center items-center text-center py-20 sm:py-0 px-2">
                     <button className="flex justify-center items-center gap-1 text-sm sm:text-lg bg-linear-to-b from-gray-950 to-blue-950/50 border rounded-full py-1.5 px-3 border-blue-700 text-blue-300">
                         <Image className="grayscale-50" src="/images/logo-hero-1.png" alt="Developer Icon" width={20} height={20} />    
@@ -65,10 +67,9 @@ export default function ProjectPage() {
                 <div className="flex justify-around items-center flex-wrap gap-10 w-full py-5">
                     {
                         project.stacks.map( stack => (
-                            <article key={stack.name} className="flex flex-col items-center text-center gap-2 max-w-60 hover:scale-110 transition-all duration-200">
+                            <article key={stack} className="flex flex-col items-center text-center gap-2 max-w-60 hover:scale-110 transition-all duration-200">
                                 <GiStripedSun className="text-blue-500/50" size={44} />
-                                <h1 className="text-xl font-medium">{stack.name}</h1>
-                                <p className="text-sm text-gray-400">{stack.description}</p>
+                                <h1 className="text-xl font-medium">{stack}</h1>
                             </article>
                         ) )
                     }

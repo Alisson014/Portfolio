@@ -31,7 +31,7 @@ export default function ProjectSection(){
             <div className="flex justify-center items-center flex-wrap gap-12 mt-14 md:px-12">
                 {
                     visibleProjects.map(p => (
-                        <ProjectCard key={p.id} id={p.id} name={p.name} thumbnail={p.thumbnail} color={p.color} />
+                        <ProjectCard key={p.id} id={p.id} name={p.name} thumbnail={typeof p.thumbnail == "string" ? p.thumbnail : ''} color={p.color} isClient={true} />
                     ))
                 }
             </div>

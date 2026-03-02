@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 
-export default function ProjectCard({ id, thumbnail, name, color }){
+type ProjectCardType = {
+    id: number,
+    thumbnail: string,
+    name: string,
+    color: string,
+    isClient: boolean,
+}
+
+export default function ProjectCard({ id, thumbnail, name, color, isClient } : ProjectCardType){
 
     return(
         <article className="relative flex text-white flex-col gap-2 rounded-2xl overflow-hidden max-w-90 h-70 group">
@@ -14,7 +22,7 @@ export default function ProjectCard({ id, thumbnail, name, color }){
                     <Image src="/images/developer-icon.png" alt="Developer's icon" width={60} height={60} />
                     <p className="text-md font-medium max-w-46 text-center">{name}</p>
                 </div>
-                <Link href={`/project/${id}`} className="flex justify-end px-8 py-3">
+                <Link href={`/project/${id}`} target={isClient ? '' : '_blank'} className="flex justify-end px-8 py-3">
                     <button className="border px-6 py-1 rounded-full hover:bg-white hover:text-blue-500 cursor-pointer clickedAnimation">Ver Mais</button>
                 </Link>
             </div>
