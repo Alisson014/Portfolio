@@ -1,18 +1,24 @@
 'use client';
-import { useState } from 'react';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { pdfjs, Document, Page} from 'react-pdf';
+import type { PDFDocumentProxy } from 'pdfjs-dist/types/src/display/api';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
 import './ModalPDF.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = `/pdf.worker.mjs`;
 
+type ModalPDFType = {
+    isActive: boolean,
+    setIsActive: Dispatch<SetStateAction<boolean>>,
+    pdf: string | File,
+}
 
-export default function ModalPDF({ isActive, setIsActive, pdf }) {
-    const [numPages, setNumPages] = useState();
+export default function ModalPDF({ isActive, setIsActive, pdf } : ModalPDFType) {
+    const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState(1);
-        function onDocumentLoadSuccess({ numPages }) { 
-            setNumPages(numPages); 
+        function onDocumentLoadSuccess( document : PDFDocumentProxy ) { 
+            setNumPages(document.numPages); 
         }
 
         return (
@@ -28,7 +34,7 @@ export default function ModalPDF({ isActive, setIsActive, pdf }) {
                 <div onClick={(e) => e.stopPropagation()} 
                     className='relative w-full max-w-4xl max-h-[85vh] overflow-auto scrollbar-hide flex justify-center'>
                     <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-                        {Array.apply(null, Array(numPages)).map((x,i) => i+1).map(page=>{
+                        {[...Array(numPages)].map((x,i) => i+1).map(page=>{
                             return(<Page key={page.toString()} pageNumber={page} renderTextLayer={false} renderAnnotationLayer={false} width={Math.min(window.innerWidth * 0.9, 800)} />)
                         })}
                         {/* <Page pageNumber={pageNumber} renderTextLayer={false} renderAnnotationLayer={false}  /> */}

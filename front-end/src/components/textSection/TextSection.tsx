@@ -9,8 +9,8 @@ export default function TextSection() {
     const [isOpened, setIsOpened] = useState(false);
     const [heights, setHeights] = useState({initial: 0, expanded: 0});
 
-    const initialCardRef = useRef(null);
-    const fullContentRef = useRef(null);
+    const initialCardRef = useRef<HTMLDivElement>(null);
+    const fullContentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const observer = new ResizeObserver(() => {

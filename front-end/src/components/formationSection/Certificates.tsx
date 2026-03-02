@@ -1,6 +1,6 @@
 'use client';
 import dynamic from "next/dynamic";
-const ModalPDF = dynamic(() => import('./ModalPDF.jsx'), {
+const ModalPDF = dynamic(() => import('./ModalPDF'), {
   ssr: false,
   loading: () => <p>Carregando visualizador...</p>,
 });

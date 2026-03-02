@@ -59,7 +59,7 @@ export default function DashboardPage(){
             style={{ paddingLeft: `${isVisible ? '19.5rem' : '6.5rem'}` }}
         >
             <DashBoardMenu visible={isVisible} setVisible={setIsVisible} setData={setData} data={data} />
-            <DashboardHeader userName={user.name} actionType={actionType} setActionType={setActionType} />
+            <DashboardHeader userName={user.name} actionType={actionType} setActionType={setActionType} data={data} />
             
 
             {

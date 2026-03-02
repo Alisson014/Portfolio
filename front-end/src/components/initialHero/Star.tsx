@@ -2,7 +2,12 @@
 import { useEffect, useState } from "react";
 import './Star.css';
 
-export default function Star({initialLeft, delay}) {
+type StarType = {
+    initialLeft: number,
+    delay: number,
+}
+
+export default function Star({initialLeft, delay} : StarType) {
     const [left, setLeft] = useState(initialLeft);
 
     

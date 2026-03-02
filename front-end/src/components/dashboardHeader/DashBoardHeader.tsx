@@ -11,9 +11,10 @@ type DashBoardHeaderType = {
     userName: string,
     actionType: string,
     setActionType: Dispatch<SetStateAction<string>>,
+    data: string,
 }
 
-export default function DashboardHeader( { userName, actionType, setActionType } : DashBoardHeaderType){
+export default function DashboardHeader( { userName, actionType, setActionType, data } : DashBoardHeaderType){
     function getDate() {
         const time = new Date();
         const hour = time.getHours();
@@ -59,27 +60,33 @@ export default function DashboardHeader( { userName, actionType, setActionType }
                         <p className="hidden md:block">Registros</p> <FaList size={15} />
                     </button>
                 </li>
-                <li>
-                    <button onClick={() => setActionType("post")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-blue-500 border-l-3  clickedAnimation cursor-pointer"
-                        style={{ background: `${actionType == "post" ? 'black' : ''}` }}    
-                    >
-                        <p className="hidden md:block">Adicionar</p> <IoAddOutline size={20} />
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => setActionType("update")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-yellow-500 border-l-3 clickedAnimation cursor-pointer"
-                        style={{ background: `${actionType == "update" ? 'black' : ''}` }}    
-                    >
-                        <p className="hidden md:block">Atualizar</p> <GrUpdate size={15} />
-                    </button>
-                </li>
-                <li>
-                    <button onClick={() => setActionType("delete")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-red-500 border-l-3 clickedAnimation cursor-pointer"
-                        style={{ background: `${actionType == "delete" ? 'black' : ''}` }}    
-                    >
-                        <p className="hidden md:block">Deletar</p> <MdDeleteOutline size={20} />
-                    </button>
-                </li>
+                {   !(data == "AboutMe") &&
+                    <li>
+                        <button onClick={() => setActionType("post")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-blue-500 border-l-3  clickedAnimation cursor-pointer"
+                            style={{ background: `${actionType == "post" ? 'black' : ''}` }}    
+                        >
+                            <p className="hidden md:block">Adicionar</p> <IoAddOutline size={20} />
+                        </button>
+                    </li>
+                }
+                { (data == "AboutMe" || data == "Formation" || data == "Home") &&
+                    <li>
+                        <button onClick={() => setActionType("update")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-yellow-500 border-l-3 clickedAnimation cursor-pointer"
+                            style={{ background: `${actionType == "update" ? 'black' : ''}` }}    
+                        >
+                            <p className="hidden md:block">Atualizar</p> <GrUpdate size={15} />
+                        </button>
+                    </li>
+                }
+                {   !(data == "AboutMe") &&
+                    <li>
+                        <button onClick={() => setActionType("delete")} className="flex justify-between items-center w-fil md:w-30 lg:w-40 bg-gray-800 py-2 px-2 lg:px-4 rounded-lg border-l-red-500 border-l-3 clickedAnimation cursor-pointer"
+                            style={{ background: `${actionType == "delete" ? 'black' : ''}` }}    
+                        >
+                            <p className="hidden md:block">Deletar</p> <MdDeleteOutline size={20} />
+                        </button>
+                    </li>
+                }
             </ul>
         </header>
     );
