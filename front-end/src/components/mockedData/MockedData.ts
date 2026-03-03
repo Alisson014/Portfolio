@@ -59,11 +59,35 @@ export type CuriositiesType = {
     link: string,
 }
 
+export type UserType = {
+    id: number,
+    name: string,
+    email: string,
+    icon: string,
+    password: string,
+    contactEmail: string,
+    linkedin: string,
+    github: string,
+    instagram: string,
+}
+
 // type BackgroundImages = {
 //     id: number,
 //     name: string,
 //     url: string,
 // }
+
+export const User : UserType = {
+    id: 0,
+    name: 'José Alisson Dias da Costa',
+    email: 'josealissondiasdacostaf10@gmail.com',
+    password: 'thisIsASecreteP',
+    icon: 'https://github.com/Alisson014.png',
+    contactEmail: 'josealissondiasdacostaf10@gmail.com',
+    github: 'https://www.github.com/Alisson014',
+    instagram: 'https://www.instagram.com/j.alissons014/',
+    linkedin: 'https://www.linkedin.com/in/jos%C3%A9-alisson-dias-da-costa-59375b322/'
+}
 
 export const aboutMe : AbouteMeType = {
     resume: 'Técnico em Informática para internet, Desenvolvedor FullStack e um jovem fascinado pelo mundo da tecnologia digital ecom muito estima pelo desenvolvimento profissional e pessoal.',

@@ -6,6 +6,7 @@ import { MdOutlineMailOutline, MdDeleteOutline } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
 import { IoAddOutline } from "react-icons/io5";
 import { GrUpdate } from "react-icons/gr";
+import Link from "next/link";
 
 type DashBoardHeaderType = {
     userName: string,
@@ -32,7 +33,6 @@ export default function DashboardHeader( { userName, actionType, setActionType, 
 
     const greeting = getDate();
 
-//bg-[url('/images/24681296_6940220.jpg')] bg-cover bg-center
     return(
         <header className="flex flex-col justify-between w-full bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-800 h-25 sm:h-36 rounded-2xl p-3 sm:p-4">
             <div className="flex justify-between items-center flex-wrap gap-y-2 w-full">
@@ -45,9 +45,11 @@ export default function DashboardHeader( { userName, actionType, setActionType, 
                         </button>
                     </li>
                     <li>
-                        <button className="flex justify-center items-center rounded-full overflow-hidden">
-                            <Image src={"https://github.com/Alisson014.png"} alt="user image" width={45} height={45} />
-                        </button>
+                        <Link href={'/adm/user'} >
+                            <button className="flex justify-center items-center rounded-full overflow-hidden cursor-pointer">
+                                <Image src={"https://github.com/Alisson014.png"} alt="user image" width={45} height={45} />
+                            </button>
+                        </Link>
                     </li>
                 </ul>
             </div>
