@@ -1,3 +1,5 @@
+'use client';
+import { useState } from "react";
 
 import { MdOutlineMailOutline } from "react-icons/md";
 import { MdOutlineAutoGraph } from "react-icons/md";
@@ -6,14 +8,23 @@ import { LuGraduationCap } from "react-icons/lu";
 import { GoProjectSymlink } from "react-icons/go";
 import { MdOutlineOpenInNew, MdDeleteOutline} from "react-icons/md";
 
+import { Messages, MessageType } from "../mockedData/MockedData";
+
 import './DashboardHome.css';
 import AreaGraph from "../charts/AreaGraph";
 import BarGraph from "../charts/BarGraph";
 import PizzaGraph from "../charts/PizzaGraph";
 import RadarGraph from "../charts/RadarGraph";
+import ModalViewMessages from "../dashboardMessages/ModalViewMessages";
+import ModalDeleteMessage from "../dashboardMessages/ModalDeleteMessage";
+
 
 
 export default function DashboardHome(){
+    const [isModalViewActive, setIsModalViewActive] = useState<boolean>(false);
+    const [isModalDeleteActive, setIsModalDeleteActive] = useState<boolean>(false);
+    const [message, setMessage] = useState<MessageType>({ id: 0, name: '', company: '', email: '', message: '', subject: '' });
+    const [index, setIndex] = useState<number>(0);
 
     return(
         <div className="w-full py-4 appearAnimation">
@@ -68,70 +79,18 @@ export default function DashboardHome(){
                             </tr>
                         </thead>
                         <tbody className="rounded-b-lg overflow-y-scroll">
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Netflix</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Google</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Amazon</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>PM</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Editora Brasil</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Microsoft</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Netflix</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
-                            <tr className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
-                                <td>Netflix</td>
-                                <td title="Confirmação de vínculo">Confirmação de vínculo</td>
-                                <td className="flex justify-start items-center gap-2">
-                                    <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} />
-                                    <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} />
-                                </td>
-                            </tr>
+                            {
+                                Messages.map(m => (
+                                    <tr key={m.id} className="grid grid-cols-3 w-full pt-2 pb-1 pl-4">
+                                        <td>{m.company}</td>
+                                        <td title="Confirmação de vínculo">{m.subject}</td>
+                                        <td className="flex justify-start items-center gap-2">
+                                            <button onClick={() => {setMessage(m); setIsModalViewActive(true)}}> <MdOutlineOpenInNew className="text-green-500 cursor-pointer clickedAnimation" size={20} /> </button>
+                                            <button onClick={() => {setIndex(m.id); setIsModalDeleteActive(true)}} > <MdDeleteOutline className="text-red-500 cursor-pointer clickedAnimation" size={20} /> </button>
+                                        </td>
+                                    </tr>
+                                ))
+                            }
                         </tbody>
                     </table>
                 </div>
@@ -147,6 +106,9 @@ export default function DashboardHome(){
                     </div>
                 </div>
             </div>
+
+            { message.id != 0 && <ModalViewMessages isActive={isModalViewActive} setIsActive={setIsModalViewActive} message={message} /> }
+            { index != 0 && <ModalDeleteMessage index={index} isActive={isModalDeleteActive} setIsActive={setIsModalDeleteActive} /> }
         </div>
     );
 }

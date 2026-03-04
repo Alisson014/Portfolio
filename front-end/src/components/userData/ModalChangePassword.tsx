@@ -102,7 +102,7 @@ export default function ModalChangePassword({ isActive, setIsActive }: ModalChan
                         className="px-2 pb-2 pt-0.5 text-gray-300 border-b border-gray-200 w-full" 
                         type="password" name="confirmedPassword" id="confirmedPasswordId" placeholder="Confirmar senha " />
 
-                    <button type="submit" className="bg-white text-black hover:bg-gray-900/60 hover:text-white w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Entrar </button>
+                    <button type="submit" className="bg-white text-black hover:bg-gray-900/60 hover:text-white w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Alterar </button>
                 </form>
             </div>
         </div>

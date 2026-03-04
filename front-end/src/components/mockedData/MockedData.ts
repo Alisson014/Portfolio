@@ -71,6 +71,15 @@ export type UserType = {
     instagram: string,
 }
 
+export type MessageType = {
+    id: number,
+    name: string,
+    company: string,
+    subject: string,
+    email: string,
+    message: string,
+}
+
 // type BackgroundImages = {
 //     id: number,
 //     name: string,
@@ -325,3 +334,54 @@ export const stars = [
     {id: 19, daley: 0.95}, 
     {id: 20, daley: 3.8}
 ];
+
+export const Messages : Array<MessageType> = [
+    {
+        id: 1,
+        name: 'Lionel',
+        company: 'Google',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+    {
+        id: 2,
+        name: 'Diana',
+        company: 'Netflix',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+    {
+        id: 3,
+        name: 'Julius',
+        company: 'Atlântico',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+    {
+        id: 4,
+        name: 'Assís',
+        company: 'Folha',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+    {
+        id: 5,
+        name: 'Veríssimo',
+        company: 'Ordo Realitas',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+    {
+        id: 6,
+        name: 'Bruce',
+        company: 'Microsoft',
+        subject: 'Confirmação de vínculo',
+        email: 'email@gmail.com',
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+    },
+]
