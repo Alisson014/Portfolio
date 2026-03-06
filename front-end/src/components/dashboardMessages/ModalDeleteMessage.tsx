@@ -8,11 +8,14 @@ type ModalDeleteMessageType = {
     index: number,
     isActive: boolean,
     setIsActive: React.Dispatch<SetStateAction<boolean>>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function ModalDeleteMessage({ index, isActive, setIsActive } : ModalDeleteMessageType ){
+export default function ModalDeleteMessage({ index, isActive, setIsActive, setIsUpdating } : ModalDeleteMessageType ){
 
     async function handleDelete(){
+        setIsUpdating(false);
+
         try {
             if(!index){
                 throw new Error("Uma mensagem deve ser selecionada");
@@ -21,6 +24,7 @@ export default function ModalDeleteMessage({ index, isActive, setIsActive } : Mo
             //Delete request
             toast.success("Mensagem deletada!");
             setIsActive(false);
+            setIsUpdating(true);
             
         } catch (e: unknown) {
             if(e instanceof Error){

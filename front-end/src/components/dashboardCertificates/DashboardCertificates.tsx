@@ -1,11 +1,10 @@
 'use client';
 
 import dynamic from 'next/dynamic';
-import { useEffect, useState } from "react";
-import { toast } from 'react-toastify';
+import { SetStateAction, useState } from "react";
 
 
-import { Certificates, Certificates as certificatesData } from "../mockedData/MockedData";
+import { CertificatesType } from "../mockedData/MockedData";
 import Certificate from "../formationSection/Certificate";
 import CertificatesAddForm from './CertificatesAddForm';
 
@@ -19,12 +18,13 @@ import CetificatesDeleteForm from './CertificatesDeleteForm';
 
 type DashboardCertificatesType = {
     actionType: string,
+    Certificates: Array<CertificatesType>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function DashboardCertificates({ actionType } : DashboardCertificatesType){
+export default function DashboardCertificates({ actionType, Certificates, setIsUpdating } : DashboardCertificatesType){
     const [pdf, setPdf] = useState(0);
     const [isActive, setIsActive] = useState(false);
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
 
     const components = [
         {
@@ -35,13 +35,7 @@ export default function DashboardCertificates({ actionType } : DashboardCertific
             id: "delete",
             component: <CetificatesDeleteForm data={Certificates} setIsUpdating={setIsUpdating} />
         }
-    ]
-
-    useEffect(() => {
-        if(isUpdating){
-            toast("Default data updated");
-        }
-    },[isUpdating]);
+    ];
 
     return(
         <div className="w-full h-full py-4 appearAnimation">
@@ -53,7 +47,7 @@ export default function DashboardCertificates({ actionType } : DashboardCertific
             <div className={`flex flex-col-reverse md:grid ${actionType == "post" || actionType == "delete" ? 'md:grid-cols-2' : 'grid-cols-1'} gap-2 place-items-start w-full mt-4`}>
                 <div className="flex justify-center scale-80 sm:scale-100 sm:justify-start flex-wrap gap-2">
                     {
-                        certificatesData.map(c => (
+                        Certificates.map(c => (
                             <Certificate key={c.id} id={c.id} name={c.name} index={-1} company={c.company} setPdf={setPdf} setIsActive={setIsActive} isClient={false} />
                         ))
                     }
@@ -64,7 +58,7 @@ export default function DashboardCertificates({ actionType } : DashboardCertific
                 }
             </div>
 
-            <ModalPDF isActive={isActive} setIsActive={setIsActive} pdf={certificatesData[pdf].pdf} />
+            <ModalPDF isActive={isActive} setIsActive={setIsActive} pdf={Certificates[pdf].pdf} />
         </div>
     );
 }

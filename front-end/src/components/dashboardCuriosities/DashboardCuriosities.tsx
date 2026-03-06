@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { SetStateAction } from "react";
 
 import Curiosity from "../curiositiesSection/Curiosity";
-import { Curiosities } from "@/src/components/mockedData/MockedData";
 import CuriositiesAddForm from "./CuriositiesAddForm";
 import CuriositiesDeleteForm from "./CuriositiesDeleteForm";
+
+import { CuriositiesType } from "@/src/components/mockedData/MockedData";
 
 import { LuAward } from "react-icons/lu";
 
 
 type DashboardCuriositiesType = {
     actionType: string,
+    Curiosities: Array<CuriositiesType>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function DashboardCuriosities({ actionType } : DashboardCuriositiesType){
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+export default function DashboardCuriosities({ actionType, Curiosities, setIsUpdating } : DashboardCuriositiesType){
 
     const components = [
         {
@@ -25,13 +26,7 @@ export default function DashboardCuriosities({ actionType } : DashboardCuriositi
             id: "delete",
             component: <CuriositiesDeleteForm setIsUpdating={setIsUpdating} data={Curiosities} />
         }
-    ]
-
-    useEffect(() => {
-        if(isUpdating){
-            toast("Default data updated");
-        }
-    },[isUpdating]);
+    ];
 
     return(
         <div className="w-full h-full py-4 appearAnimation">

@@ -10,7 +10,7 @@ import { IoChatbubblesOutline } from "react-icons/io5";
 import { UserIcon } from "lucide-react";
 import { MdOutlineMailOutline } from "react-icons/md";
 import { CiLinkedin } from "react-icons/ci";
-import { FaGithub, FaInstagram } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaInstagram } from "react-icons/fa";
 import { BiSolidEdit } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import { toast } from "react-toastify";
@@ -22,6 +22,8 @@ export default function UserData() {
     const [userFormData, setUserFormData] = useState<UserType>({ id: User.id, name: User.name, email: User.email , icon: User.icon, password: '', contactEmail: User.contactEmail, github: User.github, instagram: User.instagram, linkedin: User.linkedin });
     const [isEditing, setIsEditing] = useState<boolean>(false);
     const [isActive, setIsActive] = useState<boolean>(false);
+    const [isVisible, setIsVisible] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>("");
 
     function onChange(e: ChangeEvent<HTMLInputElement>) {
         setUserFormData(prevUser => ({...prevUser, [e.target.name] : e.target.value}));
@@ -44,7 +46,7 @@ export default function UserData() {
             // Update user request
 
             toast.success("Informações atualizadas");
-            // Get user request
+            setPassword("");
             setUserFormData({ id: User.id, name: User.name, email: User.email , icon: User.icon, password: '', contactEmail: User.contactEmail, github: User.github, instagram: User.instagram, linkedin: User.linkedin });
             
         } catch (e : unknown) {
@@ -56,7 +58,7 @@ export default function UserData() {
     }
 
     return(
-        <section className="absolute flex flex-col justify-start md:justify-center items-center gap-2 bg-black/30 w-full h-screen overflow-y-scroll scrollBar pt-10 pb-22 px-2 sm:px-4 ">
+        <section className="absolute flex flex-col justify-start md:justify-center items-center gap-2 bg-black/30 w-full h-screen overflow-y-scroll scrollBar py-20 pb-22 px-2 sm:px-4 ">
             <button onClick={() => router.back()} className="fixed top-4 left-4 text-xl hover:underline cursor-pointer">
                 ◁ Voltar
             </button>
@@ -110,6 +112,11 @@ export default function UserData() {
                             type="text" name="instagram" id="UserInstagram" placeholder="Instagram" />
                     </div>
                 </div>
+
+                <label onClick={() => setIsVisible(prev => !prev)} htmlFor="UserNameId" className="mt-4 w-full flex items-center gap-2" > { isVisible ? (<FaEye size={20} />) : (<FaEyeSlash size={20} />) } Senha: </label>
+                <input onChange={(e) => setPassword(e.target.value)} value={password} required
+                    className="bg-black/20 backdrop-blur-3xl text-white border-2 w-full py-2 px-4 mt-1 rounded-lg" 
+                    type={isVisible ? 'text' : 'password'} name="password" id="passwordId" placeholder="Sua senha " />
                 
                 <button type="submit" disabled={!isEditing} className="backdrop-blur-3xl hover:bg-gray-900/80 hover:text-white text-white border-2 w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Editar </button>
             </form>

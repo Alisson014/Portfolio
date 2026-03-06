@@ -26,7 +26,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
         setIsUpdating(false);
 
         try {
-            if(aboutMeData.resume == "" || aboutMeData.intrudicing == "" || aboutMeData.paragraph1 == "" || aboutMeData.paragraph2 == "" ){
+            if(!aboutMeData.resume || !aboutMeData.intrudicing || !aboutMeData.paragraph1 || !aboutMeData.paragraph2 ){
                 throw new Error("Todos os campos devem ser preenchidos");
             }
 

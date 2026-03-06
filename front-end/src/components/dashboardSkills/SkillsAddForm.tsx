@@ -14,9 +14,10 @@ type SkillsAddFormType = {
 }
 
 export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
+    const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
 
-    const [skillFormData, setSkillFormDate] = useState<SkillsType>({ id: 0, icon: '', name: '', description: '' });
+    const [skillFormData, setSkillFormDate] = useState<SkillsType>({ id: 0, icon: '', name: '', description: '', addedAt: '', skillType: '', ability: '' });
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -45,15 +46,23 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         setSkillFormDate({...skillFormData, [e.target.name]: e.target.value});
+        setSkillFormDate(prev => ({...prev, addedAt: time.toISOString()}));
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        setIsUpdating(false);
 
         try {
-            if (!skillFormData.icon || skillFormData.name == "" || skillFormData.description == "" || !formData){
+            if (!skillFormData.icon || !skillFormData.name || !skillFormData.description || !formData || !skillFormData.addedAt || !skillFormData.skillType || !skillFormData.ability){
                 throw new Error("Todos os campos devem ser preenchidos");
+            }
+
+            if (!(skillFormData.skillType == "Hard" || skillFormData.skillType == "Soft")){
+                throw new Error("Preencha o tipo de skill corretamente");
+            }
+
+            if (!(skillFormData.ability == "Front" || skillFormData.ability == "Back" || skillFormData.ability == "FullStack" || skillFormData.ability == "Programação" || skillFormData.ability == "Educação")){
+                throw new Error("Preencha o tipo de habilidade corretamente");
             }
 
             const recaptchaSuccess = await GetRecaptcha();
@@ -67,7 +76,7 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
             // Post request
 
             toast.success("SKill Adicionada com sucesso");
-            setSkillFormDate({ id: 0, name: '', description: '', icon: '' });
+            setSkillFormDate({ id: 0, name: '', description: '', icon: '', addedAt: '', skillType: '', ability: '' });
             removeFile();
             
         } catch (e : unknown) {
@@ -115,6 +124,10 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
                 </div>
                 
                 <input onChange={onChange} value={skillFormData.name} type="text" name="name" id="SkillNameId" placeholder="Nome da Skill" required />
+
+                <input onChange={onChange} value={skillFormData.skillType} type="text" name="skillType" id="SkillskillTypeId" placeholder="Hard ou Soft:" required />
+
+                <input onChange={onChange} value={skillFormData.ability} type="text" name="ability" id="SkillabilityId" placeholder="Habilidade:" required />
 
                 <input onChange={onChange} value={skillFormData.description} type="text" name="description" id="SkillDescriptionId" placeholder="Descrição: " required />
 

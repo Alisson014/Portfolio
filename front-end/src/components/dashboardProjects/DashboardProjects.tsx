@@ -1,20 +1,21 @@
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { SetStateAction } from "react";
 
 import ProjectCard from "../projectsSection/projectCard";
-import { Projects } from "../mockedData/MockedData";
 import ProjectsAddForm from "./ProjectsAddForm";
 import ProjectsDeleteForm from "./ProjectsDeleteForm";
+
+import { ProjectsType } from "../mockedData/MockedData";
 
 import { GoProjectSymlink } from "react-icons/go";
 
 
 type DashboardCuriositiesType = {
     actionType: string,
+    Projects: Array<ProjectsType>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function DashboardProjects({ actionType } : DashboardCuriositiesType){
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+export default function DashboardProjects({ actionType, Projects, setIsUpdating } : DashboardCuriositiesType){
 
     const components = [
         {
@@ -25,13 +26,7 @@ export default function DashboardProjects({ actionType } : DashboardCuriositiesT
             id: "delete",
             component: <ProjectsDeleteForm setIsUpdating={setIsUpdating} data={Projects} />
         }
-    ]
-
-    useEffect(() => {
-        if(isUpdating){
-            toast("Default data updated");
-        }
-    },[isUpdating]);
+    ];
 
     return(
         <div className="w-full h-full py-4 appearAnimation">

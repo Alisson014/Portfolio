@@ -3,30 +3,31 @@ import { ChangeEvent, Dispatch, SetStateAction, useState, useContext } from "rea
 import { toast } from "react-toastify";
 import { AuthContext } from "@/src/app/contexts/AuthContext";
 
-import { Formation, FormationType } from "../mockedData/MockedData";
+import { FormationType } from "../mockedData/MockedData";
 
 import { GrUpdate } from "react-icons/gr";
 
 type CertificatesAddFormType = {
     setIsUpdating: Dispatch<SetStateAction<boolean>>,
+    Formation: Array<FormationType>,
 }
 
-export default function FormationUpdateForm( { setIsUpdating } : CertificatesAddFormType ){
+export default function FormationUpdateForm( { setIsUpdating, Formation } : CertificatesAddFormType ){
+    const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
-
-    const [FormationFormData, setCertificateFormData] = useState<FormationType>({ id: 1, name: '', description: '' });
+    const [FormationFormData, setCertificateFormData] = useState<FormationType>({ id: 1, name: '', description: '', addedAt: '' });
 
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         setCertificateFormData({...FormationFormData, [e.target.name]: e.target.value});
+        setCertificateFormData(prev => ({...prev, addedAt: time.toISOString()}));
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        setIsUpdating(false);
 
         try {
-            if (!FormationFormData.id || FormationFormData.name == "" || FormationFormData.description == ""){
+            if (!FormationFormData.id || !FormationFormData.name || !FormationFormData.description || !FormationFormData.addedAt){
                 throw new Error("Todos os campos devem ser preenchidos");
             }
 
@@ -45,7 +46,7 @@ export default function FormationUpdateForm( { setIsUpdating } : CertificatesAdd
             // Post request
 
             toast.success("Formação Atualizada!");
-            setCertificateFormData({ id: 1, name: '', description: '' });
+            setCertificateFormData({ id: 1, name: '', description: '', addedAt: '' });
             
         } catch (e : unknown) {
             if ( e instanceof Error){

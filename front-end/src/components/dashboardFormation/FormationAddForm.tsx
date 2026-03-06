@@ -12,21 +12,21 @@ type CertificatesAddFormType = {
 }
 
 export default function FormationAddForm( { setIsUpdating } : CertificatesAddFormType ){
+    const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
-
-    const [FormationFormData, setCertificateFormData] = useState<FormationType>({ id: 0, name: '', description: '' });
+    const [FormationFormData, setCertificateFormData] = useState<FormationType>({ id: 0, name: '', description: '', addedAt: '' });
 
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         setCertificateFormData({...FormationFormData, [e.target.name]: e.target.value});
+        setCertificateFormData(prev => ({...prev, addedAt: time.toISOString()}));
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        setIsUpdating(false);
 
         try {
-            if (FormationFormData.name == "" || FormationFormData.description == ""){
+            if (!FormationFormData.name || !FormationFormData.description || !FormationFormData.addedAt){
                 throw new Error("Todos os campos devem ser preenchidos");
             }
 
@@ -41,7 +41,7 @@ export default function FormationAddForm( { setIsUpdating } : CertificatesAddFor
             // Post request
 
             toast.success("Formação adicionada com sucesso");
-            setCertificateFormData({ id: 0, name: '', description: '' });
+            setCertificateFormData({ id: 0, name: '', description: '', addedAt: '' });
             
         } catch (e : unknown) {
             if ( e instanceof Error){

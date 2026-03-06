@@ -1,12 +1,12 @@
 'use client';
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { SetStateAction } from "react";
 
 import FormationCard from "../formationSection/FormationCard";
 import FormationAddForm from "./FormationAddForm";
 import FormationUpdateForm from "./FormationUpdateForm";
 import FormationDeleteForm from "./FormationDeleteForm";
-import { Formation as FormationData } from "../mockedData/MockedData";
+
+import { FormationType } from "../mockedData/MockedData";
 
 import { MdOutlineSchool } from "react-icons/md";
 
@@ -14,11 +14,11 @@ import { MdOutlineSchool } from "react-icons/md";
 
 type DashboardFormationType = {
     actionType: string,
+    Formation: Array<FormationType>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function DashboardFormation({ actionType } : DashboardFormationType){
-
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+export default function DashboardFormation({ actionType, Formation, setIsUpdating } : DashboardFormationType){
 
     const components = [
         {
@@ -27,20 +27,13 @@ export default function DashboardFormation({ actionType } : DashboardFormationTy
         },
         {
             id: "update",
-            component: <FormationUpdateForm setIsUpdating={setIsUpdating} />
+            component: <FormationUpdateForm Formation={Formation} setIsUpdating={setIsUpdating} />
         },
         {
             id: "delete",
-            component: <FormationDeleteForm setIsUpdating={setIsUpdating} data={FormationData} />
+            component: <FormationDeleteForm setIsUpdating={setIsUpdating} data={Formation} />
         }
     ]
-
-
-    useEffect(() => {
-        if(isUpdating){
-            toast("Registros atualizados");
-        }
-    },[isUpdating]);
 
     return(
         <div className="w-full py-4 appearAnimation">
@@ -52,7 +45,7 @@ export default function DashboardFormation({ actionType } : DashboardFormationTy
             <div className={`flex flex-col-reverse md:grid ${actionType == "post" || actionType == "update" || actionType == "delete" ? 'md:grid-cols-2' : 'grid-cols-1'} gap-4 place-items-start w-full mt-4`}>
                 <div className="w-full">
                     {
-                        FormationData.map(f => (
+                        Formation.map(f => (
                             <FormationCard key={f.id} id={f.id} name={f.name} description={f.description} isClient={false} />
                         ))
                     }

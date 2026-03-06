@@ -2,34 +2,66 @@ import { CardDescription, CardTitle } from "@/components/ui/card";
 import { ChartConfig, ChartContainer, ChartLegend, ChartLegendContent, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart";
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts";
 
-const chartConfig = {
-  desktop: {
-    label: "Desktop",
-    color: "#2563eb",
-  },
-  mobile: {
-    label: "Mobile",
-    color: "#60a5fa",
-  },
-} satisfies ChartConfig
+import { VisitorType } from "../mockedData/MockedData";
 
-const chartData = [
-  { month: "January", desktop: 186, mobile: 80 },
-  { month: "February", desktop: 305, mobile: 200 },
-  { month: "March", desktop: 237, mobile: 120 },
-  { month: "April", desktop: 73, mobile: 190 },
-  { month: "May", desktop: 209, mobile: 130 },
-  { month: "June", desktop: 214, mobile: 140 },
-]
+type dataType = {
+    accessedAt: string,
+    isDesktop: boolean,
+}
 
+type AreaGraphType = {
+    Visitors: Array<VisitorType>,
+}
 
-export default function AreaGraph(){
+export default function AreaGraph( { Visitors } : AreaGraphType ){
+    const time = new Date();
+    const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+
+    function getTargetYearMonth(offset: number) {
+        const d = new Date(time.getFullYear(), time.getMonth() - offset, 1);
+        const year = d.getFullYear();
+        const month = String(d.getMonth() + 1).padStart(2, '0');
+        return `${year}-${month}`;
+    }
+
+    function counter(data: Array<dataType>, offset: number,type : boolean) {
+        const targetYM = getTargetYearMonth(offset);
+        
+        return data.reduce((acc, curr) => {
+            
+            return curr.accessedAt.startsWith(targetYM) && curr.isDesktop == type  ? acc + 1 : acc;
+        }, 0);
+    }
+
+    const chartConfig = {
+        desktop: {
+            label: "Desktop",
+            color: "#2563eb",
+        },
+        mobile: {
+            label: "Mobile",
+            color: "#60a5fa",
+        },
+    } satisfies ChartConfig
+
+    const chartData = [];
+
+    for (let i = 0; i < 4; i++){
+      chartData.push(
+        {
+          month: months.at(time.getMonth() - i),
+          desktop: counter(Visitors, i, true),
+          mobile: counter(Visitors, i, false),
+        }
+      )
+    }
+    chartData.reverse();
 
     return(
         <div className="w-full h-full bg-linear-to-br from-gray-900 to-gray-950 border border-gray-700 p-4 rounded-lg dark">
             <header className="mt-0 flex items-center gap-4 mb-2">
                 <CardTitle className="text-text text-lg w-fit">Visitantes</CardTitle>
-                <CardDescription className="w-fit" >Últimos 6 meses</CardDescription>
+                <CardDescription className="w-fit" >Últimos 4 meses</CardDescription>
             </header>
             <ChartContainer config={chartConfig} className="min-h-40 h-50 w-full">
                 <AreaChart accessibilityLayer data={chartData}>

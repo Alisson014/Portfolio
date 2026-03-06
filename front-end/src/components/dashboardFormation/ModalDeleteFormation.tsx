@@ -19,8 +19,6 @@ export default function ModalDeleteFormation({ setIsVisible, isVisible, setIsUpd
     const { GetRecaptcha } = useContext(AuthContext);
 
     async function handleDelete(){
-        setIsUpdating(false);
-
         try {
             if (ids.length == 0){
                 throw new Error("Selecione ao menos um registro");

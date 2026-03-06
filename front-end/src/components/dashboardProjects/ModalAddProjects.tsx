@@ -15,9 +15,10 @@ type ModalAddProjectType = {
 }
 
 export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, ImportedProject } : ModalAddProjectType){
+    const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
     const [stacks, setStacks] = useState<Array<string>>([]);
-    const [ProjectFormData, setProjectsFormData] = useState<ProjectsType>({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: ''});
+    const [ProjectFormData, setProjectsFormData] = useState<ProjectsType>({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: '', addedAt: ''});
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -47,6 +48,7 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>){
         setProjectsFormData({...ProjectFormData,[e.target.name] : e.target.value });
+        setProjectsFormData(prev => ({...prev, addedAt: time.toISOString()}));
     }
 
     useEffect(() => {
@@ -67,8 +69,7 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
         e.preventDefault();
 
         try {
-            setIsUpdating(false);
-            if(ProjectFormData.id == 0 || !ProjectFormData.name || !ProjectFormData.description || !ProjectFormData.color || !ProjectFormData.gitHub || !ProjectFormData.link || !ProjectFormData.thumbnail || ProjectFormData.stacks.length == 0 || !formData){
+            if(ProjectFormData.id == 0 || !ProjectFormData.name || !ProjectFormData.description || !ProjectFormData.color || !ProjectFormData.gitHub || !ProjectFormData.link || !ProjectFormData.thumbnail || ProjectFormData.stacks.length == 0 || !formData || !ProjectFormData.addedAt){
                 throw new Error("Todos os dados são obrigatórios");
             }
 
@@ -85,7 +86,8 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
             toast.success("Projeto adicionado");
             removeFile();
             setStacks([]);
-            setProjectsFormData({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: ''});
+            setProjectsFormData({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: '', addedAt: ''});
+            setIsActive(false);
             
         } catch (e: unknown) {
             if(e instanceof Error){

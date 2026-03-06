@@ -10,12 +10,16 @@ export type SkillsType = {
     icon: string | File,
     name: string,
     description: string,
+    addedAt: string,
+    skillType: string,
+    ability: string,
 }
 
 export type FormationType = {
     id: number,
     name: string,
     description: string,
+    addedAt: string,
 }
 
 export type CertificatesType = {
@@ -23,6 +27,7 @@ export type CertificatesType = {
     name: string,
     company: string,
     pdf: string | File,
+    addedAt: string,
 }
 
 export type StackType = {
@@ -49,6 +54,7 @@ export type ProjectsType = {
     link: string,
     description: string,
     stacks: Array<string>,
+    addedAt: string,
 }
 
 export type CuriositiesType = {
@@ -78,6 +84,12 @@ export type MessageType = {
     subject: string,
     email: string,
     message: string,
+    sentAt: string,
+}
+
+export type VisitorType = {
+    accessedAt: string,
+    isDesktop: boolean,
 }
 
 // type BackgroundImages = {
@@ -111,66 +123,99 @@ export const Skills : Array<SkillsType> = [
         icon: '/images/nextjs-icon.png',
         name: 'Next Js',
         description: 'Tecnologia atualíssima para FullStack.',
+        addedAt: "2026-01-01",
+        skillType: 'Hard',
+        ability: 'Front',
     },
     {
         id: 2,
         icon: '/images/react-icon.png',
         name: 'React',
         description: 'Conexão com ferramentas importantíssimas',
+        addedAt: "2026-02-01",
+        skillType: 'Hard',
+        ability: 'Front',
     },
     {
         id: 3,
         icon: '/images/git-icon.png',
         name: 'Git',
         description: 'A base para um bom vercionamento',
+        addedAt: "2026-03-01",
+        skillType: 'Hard',
+        ability: 'Programação',
     },
     {
         id: 4,
         icon: '/images/javascript-icon.png',
         name: 'JavaScript',
         description: 'Linguagem de programação consolidada',
+        addedAt: "2025-12-01",
+        skillType: 'Hard',
+        ability: 'Programação',
     },
     {
         id: 5,
         icon: '/images/github-icon.png',
         name: 'GitHub',
         description: 'Gerenciamento de projetos e repositórios',
+        addedAt: "2026-01-01",
+        skillType: 'Hard',
+        ability: 'Programação',
     },
     {
         id: 6,
         icon: '/images/nodejs02-icon.png',
         name: 'Node js',
         description: 'Um "motor" para aplicações backend',
+        addedAt: "2026-02-01",
+        skillType: 'Hard',
+        ability: 'Back',
     },
     {
         id: 7,
         icon: '/images/postgresql-icon.png',
         name: 'PostgreSQL',
         description: 'Gerenciamento de banco de dados',
+        addedAt: "2025-03-01",
+        skillType: 'Hard',
+        ability: 'Back',
     },
     {
         id: 8,
         icon: '/images/prisma-icon.png',
         name: 'Prisma ORM',
         description: 'Conexão facilitado com banco de dados',
+        addedAt: "2026-12-01",
+        skillType: 'Hard',
+        ability: 'Back',
     },
     {
         id: 9,
         icon: '/images/python-icon.png',
         name: 'Python',
         description: 'Um linguagem literalmente de alto nível',
+        addedAt: "2026-01-01",
+        skillType: 'Hard',
+        ability: 'Programação',
     },
     {
         id: 10,
         icon: '/images/teamwork-icon.png',
         name: 'Trabalho em equipe',
         description: 'Consolidando a experiência de projeto',
+        addedAt: "2026-02-01",
+        skillType: 'Soft',
+        ability: 'Educação',
     },
     {
         id: 11,
         icon: '/images/tailwind-icon.png',
         name: 'Tailwind CSS',
         description: 'Estilizando e performando código',
+        addedAt: "2026-03-01",
+        skillType: 'Hard',
+        ability: 'Front',
     },
 ];
 
@@ -179,16 +224,19 @@ export const Formation : Array<FormationType> = [
         id: 1,
         name: 'IFCE',
         description: 'Técnico em informática para internet pelo Instituto Federal do Ceará',
+        addedAt: "2026-01-01",
     },
     {
         id: 2,
         name: 'C-Jovem',
         description: 'Desenvolvimento FullStack pelo programa Capacita Brasil / C-Jovem',
+        addedAt: "2026-02-01",
     },
     {
         id: 3,
         name: 'UFCA',
         description: 'Engenharia de Software',
+        addedAt: "2026-03-01",
     }
 ];
 
@@ -197,32 +245,43 @@ export const  Certificates : Array<CertificatesType> = [
         id: 0, 
         name: 'Desenvolvimento FullStack', 
         company: 'Capacita / C-jovem', 
-        pdf: '/certificado_cnh.pdf' },
+        pdf: '/certificado_cnh.pdf',
+        addedAt: "2026-01-01",
+     },
     { 
         id: 1, 
         name: 'Técnico Informática para Internet', 
         company: 'IFCE', 
-        pdf: '/Plano de Testes-spotify.pdf (1).pdf' },
+        pdf: '/Plano de Testes-spotify.pdf (1).pdf',
+        addedAt: "2026-02-01",
+    },
     { 
         id: 2, 
         name: 'Empreendedorismo', 
         company: 'Sebrae', 
-        pdf: '/Curriculo (1).pdf' },
+        pdf: '/Curriculo (1).pdf',
+        addedAt: "2026-03-01",
+    },
     { 
         id: 3, 
         name: 'Inglês Técnico', 
         company: 'Dell', 
-        pdf: '/certificado_feira.pdf' },
+        pdf: '/certificado_feira.pdf',
+        addedAt: "2026-04-01",
+    },
     { 
         id: 4, 
         name: 'Jornada Inteligência Artificial', 
         company: 'Hashtag', 
-        pdf: '/certificado_cnh.pdf' },
+        pdf: '/certificado_cnh.pdf',
+        addedAt: "2026-05-01",
+    },
     { 
         id: 5, 
         name: 'Minecurso Pensando como Backend Developer', 
         company: 'SeInfo IFCE', 
-        pdf: '/certificado_feira.pdf'
+        pdf: '/certificado_feira.pdf',
+        addedAt: "2026-06-01",
     },
 ]
 
@@ -236,6 +295,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/Alisson014/Portfolio', 
         link: "#",
         stacks: ["HTML", "CSS", "JavaScript"], 
+        addedAt: "2026-01-01",
     },
     { 
         id: 1056212441, 
@@ -246,6 +306,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/Alisson014/MonitoramentoClimatico', 
         link: "https://monitoramento-climatico-henna.vercel.app/", 
         stacks: ["HTML", "CSS", "JavaScript"],
+        addedAt: "2026-02-01",
     },
     { 
         id: 907513482, 
@@ -256,6 +317,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/Alisson014/PrefeituraDeFortaleza', 
         link: "https://alisson014.github.io/PrefeituraDeFortaleza/",
         stacks: ["HTML", "CSS", "JavaScript"],
+        addedAt: "2026-03-01",
     },
     { 
         id: 885832802, 
@@ -266,6 +328,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/Alisson014/JeriGit', 
         link: "https://alisson014.github.io/JeriGit/",
         stacks: ["HTML", "CSS", "JavaScript"],
+        addedAt: "2026-04-01",
     },
     { 
         id: 875029090, 
@@ -276,6 +339,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/Alisson014/All-Books', 
         link: "https://all-books.vercel.app/",
         stacks: ["HTML", "CSS", "JavaScript"],
+        addedAt: "2026-05-01",
     },
     { 
         id: 5, 
@@ -286,6 +350,7 @@ export const Projects : Array<ProjectsType> = [
         gitHub: 'https://github.com/vaghenrique/FSN2-GRUPO06-VIDEOGAME', 
         link: "https://vaghenrique.github.io/FSN2-GRUPO06-VIDEOGAME/",
         stacks: ["HTML", "CSS", "JavaScript"],
+        addedAt: "2026-06-01",
     },
 ];
 
@@ -342,7 +407,8 @@ export const Messages : Array<MessageType> = [
         company: 'Google',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2026-01-10",
     },
     {
         id: 2,
@@ -350,7 +416,8 @@ export const Messages : Array<MessageType> = [
         company: 'Netflix',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2025-01-10",
     },
     {
         id: 3,
@@ -358,7 +425,8 @@ export const Messages : Array<MessageType> = [
         company: 'Atlântico',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2024-01-10",
     },
     {
         id: 4,
@@ -366,7 +434,8 @@ export const Messages : Array<MessageType> = [
         company: 'Folha',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2023-01-10",
     },
     {
         id: 5,
@@ -374,7 +443,8 @@ export const Messages : Array<MessageType> = [
         company: 'Ordo Realitas',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2022-01-10",
     },
     {
         id: 6,
@@ -382,6 +452,34 @@ export const Messages : Array<MessageType> = [
         company: 'Microsoft',
         subject: 'Confirmação de vínculo',
         email: 'email@gmail.com',
-        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. '
+        message: 'Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. Lorem ipsun dolor sit amet consectetur adicipsing labor. ',
+        sentAt: "2021-01-10",
     },
 ]
+
+const MVisitors : Array<VisitorType> = [
+    {
+        accessedAt: "2026-01-01",
+        isDesktop: false,
+    }
+]
+
+for (let i = 0; i < 100; i++){
+    MVisitors.push(
+        {
+            accessedAt: `2026-${ String(i%12 + 1).padStart(2, '0')}-01`,
+            isDesktop: true,
+        }   
+    )
+}
+
+for (let i = 0; i < 75; i++){
+    MVisitors.push(
+        {
+            accessedAt: `2026-${ String(i%12 + 1).padStart(2, '0')}-01`,
+            isDesktop: false,
+        }   
+    )
+}
+
+export const Visitors : Array<VisitorType> = MVisitors;

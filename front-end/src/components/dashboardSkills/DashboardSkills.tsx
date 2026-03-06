@@ -1,8 +1,7 @@
 'use client';
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { SetStateAction } from "react";
 
-import { Skills } from "../mockedData/MockedData";
+import { SkillsType } from "../mockedData/MockedData";
 
 import Skill from "../skillsSection/Skill";
 import SkillsAddForm from "./SkillsAddForm";
@@ -13,10 +12,11 @@ import { RiStackLine } from "react-icons/ri";
 
 type DashboardSkillsType = {
     actionType: string,
+    Skills: Array<SkillsType>,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
-export default function DashboardSkills( { actionType } : DashboardSkillsType ){
-    const [isUpdating, setIsUpdating] = useState<boolean>(false);
+export default function DashboardSkills( { actionType, Skills, setIsUpdating } : DashboardSkillsType ){
 
     const components = [
         {
@@ -27,14 +27,7 @@ export default function DashboardSkills( { actionType } : DashboardSkillsType ){
             id: 'delete',
             component: <SkillsDeleteForm setIsUpdating={setIsUpdating} data={Skills} />
         }
-    ]
-
-
-    useEffect(() => {
-        if(isUpdating){
-            toast("Get data updated!");
-        }
-    }, [isUpdating]);
+    ];
 
     return(
         <div className="w-full mt-4 appearAnimation">

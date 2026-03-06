@@ -6,7 +6,8 @@ import { MessageType } from "../mockedData/MockedData";
 type ModalViewMessagesType = {
     isActive: boolean,
     setIsActive: React.Dispatch<SetStateAction<boolean>>,
-    message: MessageType
+    message: MessageType,
+    setIsUpdating: React.Dispatch<SetStateAction<boolean>>,
 }
 
 export default function ModalViewMessages({ isActive, setIsActive, message } : ModalViewMessagesType){

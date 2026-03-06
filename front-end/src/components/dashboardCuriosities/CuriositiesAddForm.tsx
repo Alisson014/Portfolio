@@ -49,7 +49,6 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        setIsUpdating(false);
 
         try {
             if (CuriositiesFormData.name == "" || CuriositiesFormData.description == "" || !CuriositiesFormData.image || CuriositiesFormData.link == "" || !formData){

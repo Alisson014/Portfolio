@@ -14,9 +14,9 @@ type CertificatesAddFormType = {
 }
 
 export default function CertificatesAddForm( { setIsUpdating } : CertificatesAddFormType ){
+    const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
-
-    const [CertificateFormData, setCertificateFormData] = useState<CertificatesType>({ id: 0, pdf: '', name: '', company: '' });
+    const [CertificateFormData, setCertificateFormData] = useState<CertificatesType>({ id: 0, pdf: '', name: '', company: '', addedAt: '' });
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -45,14 +45,14 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         setCertificateFormData({...CertificateFormData, [e.target.name]: e.target.value});
+        setCertificateFormData(prev => ({...prev, addedAt: time.toISOString()}));
     }
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
-        setIsUpdating(false);
 
         try {
-            if (!CertificateFormData.pdf || CertificateFormData.name == "" || CertificateFormData.company == "" || !formData){
+            if (!CertificateFormData.pdf || !CertificateFormData.name || !CertificateFormData.company || !formData || !CertificateFormData.addedAt){
                 throw new Error("Todos os campos devem ser preenchidos");
             }
 
@@ -67,7 +67,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
             // Post request
 
             toast.success("Certificado adicionado com sucesso");
-            setCertificateFormData({ id: 0, name: '', company: '', pdf: '' });
+            setCertificateFormData({ id: 0, name: '', company: '', pdf: '', addedAt: '' });
             removeFile();
             
         } catch (e : unknown) {

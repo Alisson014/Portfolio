@@ -5,28 +5,41 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 
 import { type ChartConfig } from "@/components/ui/chart"
 import { CardDescription, CardTitle } from "@/components/ui/card"
-import React from "react";
 
-const chartData = [
-  { skill: "hard", count: 6, fill: "var(--color-hard)" },
-  { skill: "soft", count: 5, fill: "var(--color-soft)" },
-]
+import { SkillsType } from "../mockedData/MockedData";
 
-const chartConfig = {
-  hard: {
-    label: "Hard skills",
-    color: "#3b82f6",
-  },
-  soft: {
-    label: "Soft skills",
-    color: "#eaf3ff",
-  },
-} satisfies ChartConfig
+type dataType = {
+    skillType: string,
+}
 
-export default function PizzaGraph(){
-    const totalVisitors = React.useMemo(() => {
-        return chartData.reduce((acc, curr) => acc + curr.count, 0)
-    }, [])
+type PizzaGraphType = {
+    Skills: Array<SkillsType>,
+}
+
+export default function PizzaGraph( { Skills } : PizzaGraphType ){
+    
+    function counter(data : Array<dataType>, type : string ){
+        return data.reduce((acc, curr) => {
+            return curr.skillType == type ? acc+1 : acc;
+        }, 0);
+    }
+
+    const chartData = [
+        { skill: "hard", count: counter(Skills, "Hard"), fill: "var(--color-hard)" },
+        { skill: "soft", count: counter(Skills, "Soft"), fill: "var(--color-soft)" },
+    ]
+
+    const chartConfig = {
+        hard: {
+            label: "Hard skills",
+            color: "#3b82f6",
+        },
+        soft: {
+            label: "Soft skills",
+            color: "#eaf3ff",
+        },
+    } satisfies ChartConfig
+
 
     return(
         <div className="w-full h-full bg-linear-to-br from-gray-900 to-gray-950 border border-gray-700 p-4 rounded-lg dark">
@@ -59,7 +72,7 @@ export default function PizzaGraph(){
                                     y={viewBox.cy}
                                     className="fill-foreground text-3xl font-bold"
                                     >
-                                    {totalVisitors.toLocaleString()}
+                                    { Skills.length }
                                     </tspan>
                                     <tspan
                                     x={viewBox.cx}

@@ -4,7 +4,8 @@ import Image from "next/image";
 
 import { PiArrowFatLinesDownFill } from "react-icons/pi";
 
-const Navbar = () => {
+export default function Navbar() {
+
     const handleScrollHome = () => {
         window.scrollTo({
             top: 0,
@@ -84,5 +85,3 @@ const Navbar = () => {
         </nav>
     );
 }
-
-export default Navbar;

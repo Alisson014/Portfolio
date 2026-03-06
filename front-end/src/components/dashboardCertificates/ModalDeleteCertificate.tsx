@@ -19,7 +19,6 @@ export default function ModalDeleteCertificate({ setIsVisible, isVisible, setIsU
     const { GetRecaptcha } = useContext(AuthContext);
 
     async function handleDelete(){
-        setIsUpdating(false);
 
         try {
             if (ids.length == 0){

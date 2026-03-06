@@ -4,21 +4,37 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/
 import { type ChartConfig } from "@/components/ui/chart"
 import { CardDescription, CardTitle } from "@/components/ui/card"
 
-const chartData = [
-  { month: "FullStack", certificate: 186 },
-  { month: "Back", certificate: 305 },
-  { month: "Programaçaõ", certificate: 237 },
-  { month: "Education", certificate: 273 },
-  { month: "Front", certificate: 209 },
-]
-const chartConfig = {
-  certificate: {
-    label: "Certificados",
-    color: "var(--chart-1)",
-  },
-} satisfies ChartConfig
+import { SkillsType } from "../mockedData/MockedData"
 
-export default function RadarGraph(){
+type dataType = {
+    ability: string,
+}
+
+type RadarGraphType = {
+    Skills: Array<SkillsType>
+}
+
+export default function RadarGraph( { Skills } : RadarGraphType ){
+
+    function counter(data : Array<dataType>, type : string ){
+        return data.reduce((acc, curr) => {
+            return curr.ability == type ? acc+1 : acc;
+        }, 0);
+    }
+
+    const chartData = [
+        { ability: "FullStack", count: counter(Skills, "Front") + counter(Skills, "Back") },
+        { ability: "Back", count: counter(Skills, "Back") },
+        { ability: "Programação", count: counter(Skills, "Programação") },
+        { ability: "Educação", count: counter(Skills, "Educação") },
+        { ability: "Front", count: counter(Skills, "Front") },
+    ]
+    const chartConfig = {
+        count: {
+            label: "Habilidades",
+            color: "var(--chart-1)",
+        },
+    } satisfies ChartConfig
 
     return(
         <div className="w-full h-full bg-linear-to-br from-gray-900 to-gray-950 border border-gray-700 p-4 rounded-lg dark">
@@ -29,11 +45,11 @@ export default function RadarGraph(){
             <ChartContainer config={chartConfig} className="h-9/10 min-h-50 w-full">
                 <RadarChart accessibilityLayer data={chartData}>
                     <ChartTooltip content={<ChartTooltipContent indicator="dashed" />} />
-                    <PolarAngleAxis dataKey="month" />
+                    <PolarAngleAxis dataKey="ability" />
                     <PolarGrid />
                     <Radar
-                        dataKey="certificate"
-                        fill="var(--color-certificate)"
+                        dataKey="count"
+                        fill="var(--color-count)"
                         fillOpacity={0.6}
                     />
                 </RadarChart>
