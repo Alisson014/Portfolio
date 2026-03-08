@@ -33,7 +33,7 @@ export default function ModalDeleteFormation({ setIsVisible, isVisible, setIsUpd
             // Delete request
             setIsUpdating(true);
             setItems([]);
-            toast.success("Formações deletadas");
+            toast.success("Deletado!");
             setIsVisible(false);
 
         } catch (e : unknown) {

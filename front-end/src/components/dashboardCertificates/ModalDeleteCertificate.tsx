@@ -34,7 +34,7 @@ export default function ModalDeleteCertificate({ setIsVisible, isVisible, setIsU
             // Delete request
             setIsUpdating(true);
             setItems([]);
-            toast.success("Skills deletadas");
+            toast.success("Deletado!");
             setIsVisible(false);
 
         } catch (e : unknown) {

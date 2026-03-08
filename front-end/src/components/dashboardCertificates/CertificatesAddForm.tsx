@@ -73,7 +73,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
 
             // Post request
 
-            toast.success("Certificado adicionado com sucesso");
+            toast.success("Adicionado!");
             setCertificateFormData({ id: 0, name: '', company: '', pdf: '', addedAt: '' });
             removeFile();
             

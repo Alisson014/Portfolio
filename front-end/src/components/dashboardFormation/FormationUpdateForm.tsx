@@ -45,7 +45,7 @@ export default function FormationUpdateForm( { setIsUpdating, Formation } : Cert
 
             // Post request
 
-            toast.success("Formação Atualizada!");
+            toast.success("Atualizado!");
             setCertificateFormData({ id: 1, name: '', description: '', addedAt: '' });
             
         } catch (e : unknown) {

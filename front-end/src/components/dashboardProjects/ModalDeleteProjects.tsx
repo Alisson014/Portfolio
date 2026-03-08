@@ -35,7 +35,7 @@ export default function ModalDeleteProjects({ setIsVisible, isVisible, setIsUpda
             setIsVisible(false);
             setIsUpdating(true);
             setItems([]);
-            toast.success("Projeto(s) deletado(s)");
+            toast.success("Deletado!");
 
         } catch (e : unknown) {
             if (e instanceof Error) {

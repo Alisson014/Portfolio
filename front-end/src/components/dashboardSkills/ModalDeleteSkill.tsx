@@ -22,7 +22,7 @@ export default function ModalDeleteSkill({ setIsVisible, isVisible, ids, setIsUp
 
         try {
             if (ids.length == 0){
-                throw new Error("Selecione as Skills");
+                throw new Error("Selecione ao menos um registro");
             }
 
             const recaptchaSuccess = await GetRecaptcha();
@@ -34,7 +34,7 @@ export default function ModalDeleteSkill({ setIsVisible, isVisible, ids, setIsUp
             // Delete request
             setIsUpdating(true);
             
-            toast.success("Skills deletadas");
+            toast.success("Deletado!");
             setItems([]);
             setIsVisible(false);
 

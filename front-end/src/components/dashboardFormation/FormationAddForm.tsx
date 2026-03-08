@@ -40,7 +40,7 @@ export default function FormationAddForm( { setIsUpdating } : CertificatesAddFor
 
             // Post request
 
-            toast.success("Formação adicionada com sucesso");
+            toast.success("Adicionado!");
             setCertificateFormData({ id: 0, name: '', description: '', addedAt: '' });
             
         } catch (e : unknown) {

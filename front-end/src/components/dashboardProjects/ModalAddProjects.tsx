@@ -90,7 +90,7 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
 
             // Post request
             console.log(ProjectFormData);
-            toast.success("Projeto adicionado");
+            toast.success("Adicionado!");
             removeFile();
             setStacks([]);
             setProjectsFormData({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: '', addedAt: ''});

@@ -72,7 +72,7 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
 
             // Post request
 
-            toast.success("Certificado adicionado com sucesso");
+            toast.success("Adicionado!");
             setCuriositiesFormData({ id: 0, name: '', description: '', image: '', link: '' });
             removeFile();
             

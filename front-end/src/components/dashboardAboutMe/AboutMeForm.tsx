@@ -38,7 +38,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
 
             // Update request
 
-            toast.success("Atualização realizada com sucesso!");
+            toast.success("Atualizado!");
             setIsUpdating(true);
             
         } catch (e: unknown) {

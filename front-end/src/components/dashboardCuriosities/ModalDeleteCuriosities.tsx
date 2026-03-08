@@ -35,7 +35,7 @@ export default function ModalDeleteCuriosities({ setIsVisible, isVisible, setIsU
             setIsVisible(false);
             setIsUpdating(true);
             setItems([]);
-            toast.success("Curiosidade(s) deletada(s)");
+            toast.success("Deletado!");
 
         } catch (e : unknown) {
             if (e instanceof Error) {

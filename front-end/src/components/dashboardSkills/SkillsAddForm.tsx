@@ -64,7 +64,7 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
             }
 
             if (!(skillFormData.skillType == "Hard" || skillFormData.skillType == "Soft")){
-                throw new Error("Preencha o tipo de skill corretamente");
+                throw new Error("Preencha o tipo de skill corretamente (Hard ou Soft)");
             }
 
             if (!(skillFormData.ability == "Front" || skillFormData.ability == "Back" || skillFormData.ability == "FullStack" || skillFormData.ability == "Programação" || skillFormData.ability == "Educação")){
@@ -81,7 +81,7 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
 
             // Post request
 
-            toast.success("SKill Adicionada com sucesso");
+            toast.success("Adicionado!");
             setSkillFormDate({ id: 0, name: '', description: '', icon: '', addedAt: '', skillType: '', ability: '' });
             removeFile();
             
