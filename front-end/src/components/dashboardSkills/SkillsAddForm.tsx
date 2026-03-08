@@ -42,6 +42,9 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
     const removeFile = () => {
         setSelectedFile(null);
         setFormData(new FormData());
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
     };
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
@@ -53,8 +56,11 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
         e.preventDefault();
 
         try {
-            if (!skillFormData.icon || !skillFormData.name || !skillFormData.description || !formData || !skillFormData.addedAt || !skillFormData.skillType || !skillFormData.ability){
+            if (!skillFormData.name || !skillFormData.description || !skillFormData.addedAt || !skillFormData.skillType || !skillFormData.ability){
                 throw new Error("Todos os campos devem ser preenchidos");
+            }
+            if (!skillFormData.icon || !formData || inputRef.current?.files?.length == 0 ){
+                throw new Error("Selecione um arquivo");
             }
 
             if (!(skillFormData.skillType == "Hard" || skillFormData.skillType == "Soft")){
@@ -100,7 +106,6 @@ export default function SkillsAddForm( { setIsUpdating } : SkillsAddFormType ){
                     type="file" 
                     name="image" 
                     accept="image/png, image/jpg, image/jpeg, image/webp, image/pjpeg image/gif" 
-                    required 
                     className="hidden w-60 h-35 text-lg font-thin flex-col items-center border-2 border-neutral-600"
                 />
 

@@ -41,6 +41,9 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
     const removeFile = () => {
         setSelectedFile(null);
         setFormData(new FormData());
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
     };
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
@@ -52,8 +55,12 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
         e.preventDefault();
 
         try {
-            if (!CertificateFormData.pdf || !CertificateFormData.name || !CertificateFormData.company || !formData || !CertificateFormData.addedAt){
+            if (!CertificateFormData.name || !CertificateFormData.company || !CertificateFormData.addedAt){
                 throw new Error("Todos os campos devem ser preenchidos");
+            }
+
+            if( !CertificateFormData.pdf || !formData || inputRef.current?.files?.length == 0 ){
+                throw new Error("Selecione um arquivo")
             }
 
             const recaptchaSuccess = await GetRecaptcha();
@@ -91,7 +98,6 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
                     type="file" 
                     name="pdf" 
                     accept="application/pdf" 
-                    required 
                     className="hidden w-60 h-35 text-lg font-thin flex-col items-center border-2 border-neutral-600"
                 />
 

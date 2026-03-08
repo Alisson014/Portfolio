@@ -44,6 +44,9 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
     const removeFile = () => {
         setSelectedFile(null);
         setFormData(new FormData());
+        if (inputRef.current) {
+            inputRef.current.value = '';
+        }
     };
 
     function onChange(e: React.ChangeEvent<HTMLInputElement>){
@@ -69,8 +72,12 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
         e.preventDefault();
 
         try {
-            if(ProjectFormData.id == 0 || !ProjectFormData.name || !ProjectFormData.description || !ProjectFormData.color || !ProjectFormData.gitHub || !ProjectFormData.link || !ProjectFormData.thumbnail || ProjectFormData.stacks.length == 0 || !formData || !ProjectFormData.addedAt){
+            if(ProjectFormData.id == 0 || !ProjectFormData.name || !ProjectFormData.description || !ProjectFormData.color || !ProjectFormData.gitHub || !ProjectFormData.link || ProjectFormData.stacks.length == 0 || !ProjectFormData.addedAt){
                 throw new Error("Todos os dados são obrigatórios");
+            }
+
+            if (!ProjectFormData.thumbnail || !formData || inputRef.current?.files?.length == 0){
+                throw new Error("Selecione um arquivo");
             }
 
             const recaptchaSuccess = await GetRecaptcha();
@@ -122,7 +129,6 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
                             type="file" 
                             name="thumbnail" 
                             accept="image/*" 
-                            required 
                             className="hidden"
                         />
         

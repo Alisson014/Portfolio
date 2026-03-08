@@ -1,12 +1,15 @@
 'use client';
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-import { MdOutlineMailOutline, MdDeleteOutline } from "react-icons/md";
+import { MdDeleteOutline } from "react-icons/md";
 import { FaList } from "react-icons/fa6";
 import { IoAddOutline } from "react-icons/io5";
 import { GrUpdate } from "react-icons/gr";
-import Link from "next/link";
+import { PiFilePdfFill } from "react-icons/pi";
+import DashboardCurriculum from "../dashboardCurriculum/DashboardCurriculum";
+
 
 type DashBoardHeaderType = {
     userName: string,
@@ -16,6 +19,8 @@ type DashBoardHeaderType = {
 }
 
 export default function DashboardHeader( { userName, actionType, setActionType, data } : DashBoardHeaderType){
+    const [isActive, setIsActive] = useState<boolean>(false);
+
     function getDate() {
         const time = new Date();
         const hour = time.getHours();
@@ -34,14 +39,14 @@ export default function DashboardHeader( { userName, actionType, setActionType, 
     const greeting = getDate();
 
     return(
-        <header className="flex flex-col justify-between w-full bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-800 h-25 sm:h-36 rounded-2xl p-3 sm:p-4">
+        <header className="flex flex-col justify-between w-full bg-linear-to-br from-gray-900 to-gray-950 border-2 border-gray-800 h-30 sm:h-36 rounded-2xl p-3 sm:p-4">
             <div className="flex justify-between items-center flex-wrap gap-y-2 w-full">
-                <h1 className=" sm:text-2xl font-semibold">{ greeting }, {userName}</h1>
+                <h1 className="hidden sm:block sm:text-2xl font-semibold">{ greeting }, {userName}</h1>
 
-                <ul className="hidden sm:flex justify-end items-center gap-0.5 sm:gap-2">
+                <ul className="flex justify-end items-center gap-0.5 sm:gap-2 scale-90 sm:scale-100 ">
                     <li>
-                        <button className="border-2 text-gray-500 p-1.5 rounded-full clickedAnimation cursor-pointer">
-                            <MdOutlineMailOutline size={22} />
+                        <button onClick={() => setIsActive(true)} className="border-2 text-gray-500 p-1.5 rounded-full clickedAnimation cursor-pointer">
+                            <PiFilePdfFill size={22} />
                         </button>
                     </li>
                     <li>
@@ -90,6 +95,8 @@ export default function DashboardHeader( { userName, actionType, setActionType, 
                     </li>
                 }
             </ul>
+
+            <DashboardCurriculum isActive={isActive} setIsActive={setIsActive} />
         </header>
     );
 }
