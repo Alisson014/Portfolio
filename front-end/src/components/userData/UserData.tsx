@@ -15,6 +15,7 @@ import { BiSolidEdit } from "react-icons/bi";
 import { GrView } from "react-icons/gr";
 import { toast } from "react-toastify";
 import ModalChangePassword from "./ModalChangePassword";
+import EditUserDataButton from "../buttons/EditUserDataButton";
 
 export default function UserData() {
     const { GetRecaptcha } = useContext(AuthContext);
@@ -24,6 +25,7 @@ export default function UserData() {
     const [isActive, setIsActive] = useState<boolean>(false);
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [password, setPassword] = useState<string>("");
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function onChange(e: ChangeEvent<HTMLInputElement>) {
         setUserFormData(prevUser => ({...prevUser, [e.target.name] : e.target.value}));
@@ -31,6 +33,7 @@ export default function UserData() {
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
+        setIsLoading(true);
         
         try {
             if( !userFormData.name || !userFormData.email || !userFormData.icon || !userFormData.contactEmail || !userFormData.github || !userFormData.instagram || !userFormData.linkedin ){
@@ -54,6 +57,8 @@ export default function UserData() {
                 toast.error(e.message);
                 console.log(userFormData);
             }
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -118,7 +123,7 @@ export default function UserData() {
                     className="bg-black/20 backdrop-blur-3xl text-white border-2 w-full py-2 px-4 mt-1 rounded-lg" 
                     type={isVisible ? 'text' : 'password'} name="password" id="passwordId" placeholder="Sua senha " />
                 
-                <button type="submit" disabled={!isEditing} className="backdrop-blur-3xl hover:bg-gray-900/80 hover:text-white text-white border-2 w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Editar </button>
+                <EditUserDataButton isEditing={!isEditing} isLoading={isLoading} label="Editar" />
             </form>
 
             <nav className="fixed bottom-0 mx-auto flex items-start gap-4 p-4 rounded-t-2xl backdrop-blur-3xl border-t-2 border-x-2 ">

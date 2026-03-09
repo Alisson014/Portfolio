@@ -6,6 +6,7 @@ import { ImportProjectType, ProjectsType } from "../mockedData/MockedData";
 import { CiImageOn } from "react-icons/ci";
 import { FaTrashAlt } from "react-icons/fa";
 import { toast } from "react-toastify";
+import DashboardButton from "../buttons/DashboardButton";
 
 type ModalAddProjectType = {
     isActive: boolean,
@@ -19,6 +20,7 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
     const { GetRecaptcha } = useContext(AuthContext);
     const [stacks, setStacks] = useState<Array<string>>([]);
     const [ProjectFormData, setProjectsFormData] = useState<ProjectsType>({ id: ImportedProject?.id, name: '', description: ImportedProject?.description, color: '#000000', gitHub: ImportedProject?.html_url, link: ImportedProject?.homepage, stacks: stacks, thumbnail: '', addedAt: ''});
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -70,6 +72,7 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
 
     async function onSubmit(e: React.ChangeEvent<HTMLFormElement>){
         e.preventDefault();
+        setIsLoading(true);
 
         try {
             if(ProjectFormData.id == 0 || !ProjectFormData.name || !ProjectFormData.description || !ProjectFormData.color || !ProjectFormData.gitHub || !ProjectFormData.link || ProjectFormData.stacks.length == 0 || !ProjectFormData.addedAt){
@@ -102,6 +105,8 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
                 console.log(e);
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -164,9 +169,8 @@ export default function ModalAddProject({ isActive, setIsActive, setIsUpdating, 
                                 ))
                             }
                         </div>
-
-
-                        <button className="w-full py-2 bg-gray-950 mt-4 rounded-md border border-gray-800 cursor-pointer hover:border-border clickedAnimation">Adicionar</button>
+                        
+                        <DashboardButton isLoading={isLoading} label="Adicionar" />
                     </form>
                 </section>
             </div>

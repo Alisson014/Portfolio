@@ -1,11 +1,11 @@
 'use client';
-
-import { Dispatch, SetStateAction, useContext } from "react";
+import { Dispatch, SetStateAction, useContext, useState } from "react";
 
 import { AuthContext } from "@/src/app/contexts/AuthContext";
 
 import { MdDeleteOutline } from "react-icons/md";
 import { toast } from "react-toastify";
+import ModalDeleteButton from "../buttons/ModalDeleteButton";
 
 type ModalDeleteSkillType = {
     setIsVisible: Dispatch<SetStateAction<boolean>>, 
@@ -17,8 +17,10 @@ type ModalDeleteSkillType = {
 
 export default function ModalDeleteSkill({ setIsVisible, isVisible, ids, setIsUpdating, setItems } : ModalDeleteSkillType){
     const { GetRecaptcha } = useContext(AuthContext);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     async function handleDelete(){
+        setIsLoading(true);
 
         try {
             if (ids.length == 0){
@@ -42,6 +44,8 @@ export default function ModalDeleteSkill({ setIsVisible, isVisible, ids, setIsUp
             if (e instanceof Error) {
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -55,7 +59,7 @@ export default function ModalDeleteSkill({ setIsVisible, isVisible, ids, setIsUp
                 <p className="max-w-75 text-center text-gray-400 mt-2">Esta é uma ação permanente e não poderá ser desfeita</p>
                 <div className="flex justify-around items-center w-full mt-4">
                     <button onClick={() => setIsVisible(false)} className="border py-1 w-30 rounded-full cursor-pointer hover:bg-gray-800">Cancelar</button>
-                    <button onClick={handleDelete} className="border border-transparent py-1 w-30 rounded-full bg-red-700 cursor-pointer hover:border-text">Deletar</button>
+                    <ModalDeleteButton handle={handleDelete} isLoading={isLoading} label="Deletar" />
                 </div>
             </div>
         </div>

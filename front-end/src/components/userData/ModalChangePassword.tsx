@@ -8,6 +8,7 @@ import { GoPasskeyFill } from "react-icons/go";
 import { RiLockPasswordFill } from "react-icons/ri";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
+import CodButton from "../buttons/CodButton";
 
 type ChangePassword = {
     cod: string,
@@ -67,6 +68,7 @@ export default function ModalChangePassword({ isActive, setIsActive }: ModalChan
             //update request
             toast.success("Senha atualizada");
             setIsActive(false);
+            setformData({ cod: '', password: '', confirmedPassword: '' });
             
         } catch (e: unknown) {
             if(e instanceof Error){
@@ -82,8 +84,8 @@ export default function ModalChangePassword({ isActive, setIsActive }: ModalChan
                     <h1 className="text-center text-4xl font-semibold">Recuperar senha</h1>
                     <p className="text-lg text-center">Clique para enviar um código de acesso ao e-mail cadastrado:</p>
                     <div className="flex w-full justify-center gap-5">
-                        <button onClick={() => setIsActive(false)} type="button" className="bg-transparent border hover:bg-gray-700/80 text-white w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Cancelar </button>
-                        <button onClick={handleCod} type="button" className="bg-white hover:bg-gray-700 hover:text-white text-black w-60 py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Enviar código </button>
+                        <button onClick={() => setIsActive(false)} type="button" className="bg-transparent border hover:bg-gray-700/80 text-white w-full py-2 mt-4 rounded-lg text-lg cursor-pointer clickedAnimation" > Cancelar </button>
+                        <CodButton handle={handleCod} label="Enviar Código" type="button" />
                     </div>
                 </div>
                 <form onSubmit={onSubmit} className="flex flex-col justify-center" >

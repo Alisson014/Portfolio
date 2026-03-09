@@ -6,6 +6,7 @@ import { AuthContext } from "@/src/app/contexts/AuthContext";
 import { FormationType } from "../mockedData/MockedData";
 
 import { GrUpdate } from "react-icons/gr";
+import DashboardButton from "../buttons/DashboardButton";
 
 type CertificatesAddFormType = {
     setIsUpdating: Dispatch<SetStateAction<boolean>>,
@@ -16,7 +17,7 @@ export default function FormationUpdateForm( { setIsUpdating, Formation } : Cert
     const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
     const [FormationFormData, setCertificateFormData] = useState<FormationType>({ id: 1, name: '', description: '', addedAt: '' });
-
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function onChange(e: ChangeEvent<HTMLInputElement>){
         setCertificateFormData({...FormationFormData, [e.target.name]: e.target.value});
@@ -25,6 +26,7 @@ export default function FormationUpdateForm( { setIsUpdating, Formation } : Cert
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
+        setIsLoading(true);
 
         try {
             if (!FormationFormData.id || !FormationFormData.name || !FormationFormData.description || !FormationFormData.addedAt){
@@ -52,6 +54,8 @@ export default function FormationUpdateForm( { setIsUpdating, Formation } : Cert
             if ( e instanceof Error){
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
 
     } 
@@ -69,9 +73,7 @@ export default function FormationUpdateForm( { setIsUpdating, Formation } : Cert
 
                 <input onChange={onChange} value={FormationFormData.description} type="text" name="description" id="FormationDescriptionId" placeholder="Descrição: " required />
 
-                <button type="submit" className="w-full py-3 mt-4 bg-gray-900 rounded-md hover:bg-gray-950 border border-transparent hover:border-text cursor-pointer clickedAnimation">
-                    Adicionar
-                </button>
+                <DashboardButton isLoading={isLoading} label="Atualizar" />
             </form>
         </div>
     );

@@ -8,6 +8,7 @@ import { CuriositiesType } from "../mockedData/MockedData";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoAddOutline } from "react-icons/io5";
 import { CiImageOn } from "react-icons/ci";
+import DashboardButton from "../buttons/DashboardButton";
 
 type CuriositiessAddFormType = {
     setIsUpdating: Dispatch<SetStateAction<boolean>>,
@@ -17,6 +18,7 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
     const { GetRecaptcha } = useContext(AuthContext);
 
     const [CuriositiesFormData, setCuriositiesFormData] = useState<CuriositiesType>({ id: 0, name: '', description: '', image: '', link: '' });
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -52,6 +54,7 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
+        setIsLoading(true);
 
         try {
             if (CuriositiesFormData.name == "" || CuriositiesFormData.description == "" || CuriositiesFormData.link == ""){
@@ -80,6 +83,8 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
             if ( e instanceof Error){
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
 
     } 
@@ -125,9 +130,7 @@ export default function CuriositiesAddForm( { setIsUpdating } : CuriositiessAddF
 
                 <input onChange={onChange} value={CuriositiesFormData.link} type="text" name="link" id="CuriositiesDescriptionId" placeholder="Link: " required />
 
-                <button type="submit" className="w-full py-3 mt-4 bg-gray-900 rounded-md hover:bg-gray-950 border border-transparent hover:border-text cursor-pointer clickedAnimation">
-                    Adicionar
-                </button>
+                <DashboardButton isLoading={isLoading} label="Adicionar" />
             </form>
         </div>
     );

@@ -8,6 +8,7 @@ import { CertificatesType } from "../mockedData/MockedData";
 import { FaTrashAlt } from "react-icons/fa";
 import { IoAddOutline } from "react-icons/io5";
 import { PiFilePdf } from "react-icons/pi";
+import DashboardButton from "../buttons/DashboardButton";
 
 type CertificatesAddFormType = {
     setIsUpdating: Dispatch<SetStateAction<boolean>>,
@@ -17,6 +18,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
     const time = new Date();
     const { GetRecaptcha } = useContext(AuthContext);
     const [CertificateFormData, setCertificateFormData] = useState<CertificatesType>({ id: 0, pdf: '', name: '', company: '', addedAt: '' });
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const inputRef = useRef<HTMLInputElement>(null);
     const [formData, setFormData] = useState(new FormData());
@@ -53,6 +55,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>){
         e.preventDefault();
+        setIsLoading(true);
 
         try {
             if (!CertificateFormData.name || !CertificateFormData.company || !CertificateFormData.addedAt){
@@ -81,6 +84,8 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
             if ( e instanceof Error){
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
 
     } 
@@ -124,9 +129,7 @@ export default function CertificatesAddForm( { setIsUpdating } : CertificatesAdd
 
                 <input onChange={onChange} value={CertificateFormData.company} type="text" name="company" id="CertificateCompanyId" placeholder="Empresa ou emissor: " required />
 
-                <button type="submit" className="w-full py-3 mt-4 bg-gray-900 rounded-md hover:bg-gray-950 border border-transparent hover:border-text cursor-pointer clickedAnimation">
-                    Adicionar
-                </button>
+                <DashboardButton isLoading={isLoading} label="Adicionar" />
             </form>
         </div>
     );

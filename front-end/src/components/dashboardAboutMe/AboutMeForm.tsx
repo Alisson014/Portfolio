@@ -6,6 +6,7 @@ import { AuthContext } from "@/src/app/contexts/AuthContext";
 
 import { GrUpdate } from "react-icons/gr";
 import { toast } from "react-toastify";
+import DashboardButton from "../buttons/DashboardButton";
 
 type AboutMeFormType = {
     data : AbouteMeType, 
@@ -16,6 +17,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
     const { GetRecaptcha } = useContext(AuthContext);
 
     const [aboutMeData, setAboutMeData] = useState<AbouteMeType>( data );
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     function onChange( e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> ){
         setAboutMeData({...aboutMeData, [e.target.name] : e.target.value})
@@ -24,6 +26,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
     async function onSubmit( e: ChangeEvent<HTMLFormElement> ){
         e.preventDefault();
         setIsUpdating(false);
+        setIsLoading(true);
 
         try {
             if(!aboutMeData.resume || !aboutMeData.intrudicing || !aboutMeData.paragraph1 || !aboutMeData.paragraph2 ){
@@ -40,11 +43,12 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
 
             toast.success("Atualizado!");
             setIsUpdating(true);
-            
         } catch (e: unknown) {
             if (e instanceof Error){
                 toast.error(e.message);
             }
+        } finally {
+            setIsLoading(false);
         }
     }
 
@@ -67,7 +71,7 @@ export default function AboutMeForm({ data, setIsUpdating } : AboutMeFormType){
                 <h3 className="text-lg text-gray-400"> Parágrafo 2 </h3>
                 <textarea onChange={onChange} className="scrollBar" id="resumeId" name="paragraph2" rows={5} value={aboutMeData.paragraph2} required />
 
-                <button className="w-full bg-gray-800 py-3 mt-2 rounded-md hover:bg-gray-950 hover:border cursor-pointer clickedAnimation" type="submit">Atualizar</button>
+                <DashboardButton isLoading={isLoading} label="Atualizar" />
             </form>
         </div>
     );
