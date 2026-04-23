@@ -1,0 +1,12 @@
+.contactForm{
+    margin-top: 20px;
+}
+
+.contactForm input, .contactForm textarea{
+    width: 100%;
+    padding: 12px 12px;
+    /* border: 1px solid #313967; */
+    margin: 8px 0px;
+    border-radius: 5px;
+    background-color: #1F2937 ;
+}

@@ -1,0 +1,25 @@
+.animationUpleft{
+    animation: 
+        anyStar 10s ease-in-out infinite;
+}
+@keyframes anyStar{
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(-110vh) translateX(50vh) scale(2);
+    }
+}
+
+.animationUp{
+    animation: 
+        anyIcon 10s ease-in-out infinite;
+}
+@keyframes anyIcon{
+    from{
+        transform: translateY(10vh);
+    }
+    to{
+        transform: translateY(-110vh);
+    }
+}
